@@ -1,0 +1,7 @@
+{
+    "env": "development",
+    "token": {
+        "clientId": "671a0d81bd15b90012256641-bazella.storeino.world",
+        "clientSecret": "ziorziJ74A6V3wSmqzGsloQl"
+    }
+}
