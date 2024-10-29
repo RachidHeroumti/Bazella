@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
     "@nuxtjs/axios": "^5.13.6",
     "@storeino/template-core": "^1.0.6",
     "autoprefixer": "^10.4.19",

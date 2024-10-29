@@ -6,6 +6,7 @@
       <sections-products :key="i" :data-key="i" v-if="$settings.sections[`products_${i}`].active" :section="$settings.sections[`products_${i}`]"></sections-products>
     </template>
     <sections-posts v-if="$settings.sections.posts.active"></sections-posts>
+    <sections-map></sections-map>
     <div class="container">
       <si-app-loader  placement="BEFORE_HOME_FOOTER"/>
     </div>
