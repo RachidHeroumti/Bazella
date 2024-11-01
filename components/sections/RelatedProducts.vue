@@ -1,7 +1,7 @@
 <template>
-  <div class="container" v-if="items.length > 0">
+  <div class="container my-[75px]" v-if="items.length > 0">
     <div class="m-2">
-      <h2 class="text-2xl">{{ $settings.sections.product.title }}</h2>
+      <header class=" text-black font-tenor-sans text-20px uppercase text-center w-full">{{ $settings.sections.product.title }} You may also like</header>
     </div>
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>

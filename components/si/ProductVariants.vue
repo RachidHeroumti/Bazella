@@ -1,7 +1,7 @@
 <template>
     <div class="options">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-1 mb-1 border bg-gray-50">
-            <b class="flex mb-1 capitalize option-name">{{ option.name }}</b>
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class=" mb-1  bg-white">
+            <span class="flex mb-1  option-name uppercase ">{{ option.name }}</span>
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="mx-1 option">
                     <button :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
@@ -276,47 +276,43 @@ export default {
     margin-bottom: 5px;
 }
 .options .option button {
-    border-radius: 3px;
     background: #fff;
     padding: 5px 10px;
     cursor: pointer;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    width: 36px;
+    height: 36px;
 }
 
 
 
 .options .color .option button {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     color: transparent;
     overflow: hidden;
     position: relative;
 }
 .options .color .option button.active{
-    color: transparent;
-    box-shadow: 0 0 0px 2px white, 0 0 0px 4px var(--primary-color)
+   
 }
 
 .options .option button.size-style {
-    border-radius: 3px;
     background: #fff;
-    padding: 5px 10px;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.1) !important;
-    color: #333333;
-    width:auto;
-    height:auto;
+    
 }
 
 .options .option button.active {
-    color: white;
-    background-color: var(--primary-color);
+    background-color: white;
+    border: 2px solid black;
 }
 
 .options .option button.size-style.active{
-    color: white;
-    background-color: var(--primary-color);
+    color: black;
+    background-color: white;
+    border: 2px solid black;
 }
 
 .options-list .select-list-option .select-list{
@@ -345,7 +341,6 @@ export default {
   display: flex;
   width: 14em;
   height: 3em;
-  border-radius: .25em;
   overflow: hidden;
 }
 
