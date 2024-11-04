@@ -1,48 +1,44 @@
 <template>
-  <div class="container py-75px">
+  <div class="container py-75px w-full">
     <div v-if="loading" class="flex items-center justify-center">
       <si-loader></si-loader>
     </div>
 
-
     <div class=" ">
       <div v-if="items.length > 0">
         <div
-          v-if="$settings.sections.collections.active"
+          v-if="$settings.sections.collection_section_2.active"
           class="flex flex-wrap gap-5"
         >
           <h2
             class="text-black font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase"
           >
-            {{ $settings.sections.collections.title }}
+            {{ $settings.sections.collection_section_2.title }}
           </h2>
 
-        
-           <div class="overflow-hidden   px-5 py-3 md:px-8 md:py-4" 
-           >
-            <carousel class="flex " 
-            :perPageCustom="[[768, 2], [1024, 4]]" 
-            :navigationEnabled="true"
-            :paginationEnabled="false"
-            :rtl="$store.state.language.code == 'AR' ? true : false">
-                <slide class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 border-r border-gray" 
-                v-for="(item,i) in items" :key="i" > 
-                  <si-collection :item="item" />
-                </slide>
-            </carousel> 
+          <div class="overflow-hidden px-5 py-3 md:px-8 md:py-4 w-full ">
+            <carousel
+              class="flex "
+              :perPageCustom="[
+                [768, 2],
+                [1024, 2],
+              ]"
+              :navigationEnabled="true"
+              :paginationEnabled="false"
+              :scrollPerPage="true"
+              :rtl="$store.state.language.code == 'AR' ? true : false"
+            >
+              <slide
+                class="w-1/2 p-10px "
+                v-for="(item, i) in items"
+                :key="i"
+              >
+                <si-collection type="two-collections" :item="item" />
+              </slide>
+            </carousel>
+          </div>
         </div>
 
-
-        </div>
-
-        <!-- <si-carousel
-          v-if="$settings.sections.collections.active"
-          component="si-collection"
-          :title="$settings.sections.collections.title"
-          :list="items"
-          :mobile_size="this.mobile_size ? this.mobile_size : 100"
-        ></si-carousel> -->
-      
       </div>
     </div>
 
@@ -116,7 +112,6 @@
         >
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -125,14 +120,15 @@ export default {
     return {
       loading: true,
       items: [],
-      mobile_size: this.$settings.sections.collections.mobile_size,
+      mobile_size: this.$settings.sections.collection_section_2.mobile_size,
     };
   },
   async fetch() {
     try {
       const filter = {};
-      if (this.$settings.sections.collections.items.length > 0) {
-        this.items = this.$settings.sections.collections.items;
+      
+      if (this.$settings.sections.collection_section_2.items.length > 0) {
+        this.items = this.$settings.sections.collection_section_2.items;
       } else {
         const { data } = await this.$storeino.collections.search(filter);
         this.items = data.results;

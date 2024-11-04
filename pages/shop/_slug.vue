@@ -11,6 +11,19 @@
                                 <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-5 h-5 translate"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
                             </button>
                         </div>
+
+                        <h2 class="px-2" v-if="$settings.sections.shop.sidebar.colors.active">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
+                        <div v-if="$settings.sections.shop.sidebar.colors.active && loading.filters" class="flex items-center justify-center my-5">
+                            <si-loader></si-loader>
+                        </div>
+                        <div v-if="$settings.sections.shop.sidebar.colors.active && filters" class="flex flex-wrap mx-2 mb-2">
+                            <div v-for="(item, i) in filters.colors" :key="i" class="flex items-center my-0.5 color-option" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
+                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
+                                <label class="rounded-full cursor-pointer" :style="`background-color:${item.value2}`" :for="item.value1" :aria-label="item.value1"></label>
+                            </div>
+                        </div>
+                        <hr v-if="$settings.sections.shop.sidebar.colors.active">
+                        
                         <h2 v-if="$settings.sections.shop.sidebar.collections.active" class="px-2">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
                         <div v-if="$settings.sections.shop.sidebar.collections.active" class="flex flex-col mb-2">
                             <div v-if="loading.collections" class="flex items-center justify-center my-5">
@@ -77,6 +90,7 @@
                             <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
                         </div>
                         <hr v-if="$settings.sections.shop.sidebar.prices.active">
+
                         <h2 class="px-2" v-if="$settings.sections.shop.sidebar.sizes.active">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
                         <div v-if="$settings.sections.shop.sidebar.sizes.active && loading.filters" class="flex items-center justify-center my-5">
                             <si-loader></si-loader>
@@ -88,17 +102,8 @@
                             </div>
                         </div>
                         <hr v-if="$settings.sections.shop.sidebar.sizes.active">
-                        <h2 class="px-2" v-if="$settings.sections.shop.sidebar.colors.active">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.colors.active && loading.filters" class="flex items-center justify-center my-5">
-                            <si-loader></si-loader>
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.colors.active && filters" class="flex flex-wrap mx-2 mb-2">
-                            <div v-for="(item, i) in filters.colors" :key="i" class="flex items-center my-0.5 color-option" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
-                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
-                                <label class="rounded-full cursor-pointer" :style="`background-color:${item.value2}`" :for="item.value1" :aria-label="item.value1"></label>
-                            </div>
-                        </div>
-                        <hr v-if="$settings.sections.shop.sidebar.colors.active">
+
+                       
                         <h2 class="px-2" v-if="$settings.sections.shop.sidebar.tags.active">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
                         <div v-if="$settings.sections.shop.sidebar.tags.active && loading.filters" class="flex items-center justify-center my-5">
                             <si-loader></si-loader>

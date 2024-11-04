@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container py-5 ">
     <div v-if="loading" class="flex items-center justify-center my-5">
       <si-loader></si-loader>
     </div>

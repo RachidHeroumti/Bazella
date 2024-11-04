@@ -22,6 +22,7 @@ export default {
   ],
   plugins: [
     ...plugins,
+    { src: '~/plugins/carousel.js', mode:'client'},
   ],
   components: true,
   buildModules: [

@@ -1,7 +1,7 @@
 <template>
 <div>
     <si-app-loader placement="BEFORE_HEADER"/>
-    <div class="relative    text-primary px-40px bg-white">
+    <div class="relative    text-primary px-40px bg-white border-b border">
 
         <div class="   border-b border-gray-200 flex justify-between  text-13.6px text-black  font-tenor ">
             <div class=" flex  items-center h-full ">

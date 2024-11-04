@@ -1,115 +1,89 @@
 <template>
-    <div class=" bg-white text-black ">
-        <div class=" ">
-            <div v-if="banner.items" class="relative w-full   ">
-                <div class="inset-0 flex flex-wrap h-full    slider-item" :class="'last'" v-if="lastItem">
-
-                    <div class="relative w-full image ">
-                        <nuxt-img width="600" height="300" class="object-cover h-48 max-h-full bg-gray-200 " :src="lastItem.image ? lastItem.image.src: $store.state.defaults.sliderImage" :alt="lastItem.title"/>
-                        <div class="absolute bottom-0 flex p-2">
-                            <span v-for="(x,y) in Object.keys(banner.items)" :key="y" :class="y==activeIndex ?'bg-gray-200': ''" class="flex w-4 h-4 mx-1 bg-white rounded-full cursor-pointer" @click="activeIndex=y"></span>
-                        </div>
-                    </div>
-
-                    <!-- <div class="w-full text-white text  bg-primary">
-                        <div class="flex flex-col justify-between  p-2">
-                            <h2 class="mb-2 text-2xl">{{ lastItem.title }}</h2>
-                            <p class="mb-2">{{ lastItem.description }}</p>
-                            <router-link class="flex justify-center w-full p-2 bg-white text-primary" v-show="lastItem.button.active" :to="lastItem.button.url">{{ lastItem.button.text }}</router-link>
-                        </div>
-                    </div> -->
-
+    <div class="bg-white text-black">
+      <div>
+        <div v-if="banner.items" class="relative w-full flex ">
+          <carousel :autoplay="true" :autoplayInterval="3000" class="flex">
+            <slide v-for="(item, i) in banner.items" :key="i">
+              <div class="relative w-full image slider-item ">
+                <nuxt-img
+                  width="100%"
+                  height="300"
+                  class="object-cover w-full h-48 md:h-screen bg-gray-200 " 
+                  :src="item.image ? item.image.src : $store.state.defaults.sliderImage" 
+                  :alt="item.title" 
+                />
+                <div class="absolute bottom-0 flex p-2">
+                  <span 
+                    v-for="(x, y) in banner.items" 
+                    :key="y" 
+                    :class="{'bg-gray-300': y === activeIndex}" 
+                    class="flex w-10 h-4 mx-1 bg-gray-50 rounded-full cursor-pointer" 
+                    @click="animate(y)"
+                  ></span>
                 </div>
-                <template v-for="(key,i) in Object.keys(banner.items)">
-                    <div class="relative flex  w-full  slider-item" :class="i==activeIndex ? 'active': ''" :key="i">
-                        <div class="relative w-full image  ">
-                            <nuxt-img width="100%" height="300" class="object-cover w-full h-48 md:h-screen bg-gray-200 " :src="banner.items[key].image ? banner.items[key].image.src : $store.state.defaults.sliderImage" :alt="banner.items[key].title"/>
-                            <div class="absolute bottom-0 flex p-2">
-                                <span v-for="(x,y) in Object.keys(banner.items)" :key="y" :class="y==activeIndex ?'bg-gray-200': ''" class="flex w-4 h-4 mx-1 bg-white rounded-full cursor-pointer" @click="animate(y)"></span>
-                            </div>
-                        </div>
-                        <!-- <div class="w-full text-white text md:w-1/3 bg-primary">
-                            <div class="flex flex-col justify-between h-full p-2">
-                                <h2 class="mb-2 text-2xl">{{ banner.items[key].title }}</h2>
-                                <p class="mb-2">{{ banner.items[key].description }}</p>
-                                <router-link class="flex justify-center w-full p-2 bg-white text-primary" v-show="banner.items[key].button.active" :to="banner.items[key].button.url">{{ banner.items[key].button.text }}</router-link>
-                            </div>
-                        </div> -->
-                    </div>
-                </template>
-            </div>
-
-            <div class=" bg-bg_secendary gap-6  py-26.6px px-32 flex flex-col md:flex-row ">
-                <div class="w-full py-26.6px px-32   ">
-                    <h2 class="  pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase">Flash Sale</h2>
-                    <p class=" pb-15px  block tracking-1.7px text-13.6px  ">get 20% off if you spend 120$ or more!</p>
-                </div>
-                <div class=" w-full flex py-26.6px px-32 uppercase items-center">
-                    <div class=" px-16px ">
-                        <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
-                        <p class="  tracking-1.7px text-12px" >day</p>
-                    </div>
-                    <div class=" px-16px border-s-black border-s ">
-                        <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
-                        <p class="    tracking-1.7px text-12px " >Hours</p>
-                    </div>
-                    <div class=" px-16px border-s-black  border-s">
-                        <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
-                        <p class="   tracking-1.7px text-12px " >Minutes</p>
-                    </div>
-                    <div class=" px-16px border-s-black  border-s">
-                        <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
-                        <p class="   tracking-1.7px text-12px  " >Secends</p>
-                    </div>
-               </div>
-            </div>
-
+              </div>
+            </slide>
+          </carousel>
         </div>
+  
+        <div class="bg-bg_secendary gap-6 py-26.6px px-32 flex flex-col md:flex-row">
+          <div class="w-full py-26.6px px-32">
+            <h2 class="pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase">Flash Sale</h2>
+            <p class="pb-15px block tracking-1.7px text-13.6px">Get 20% off if you spend $120 or more!</p>
+          </div>
+          <div class="w-full flex py-26.6px px-32 uppercase items-center">
+            <div class="px-16px">
+              <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
+              <p class="tracking-1.7px text-12px">Day</p>
+            </div>
+            <div class="px-16px border-s-black border-s">
+              <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
+              <p class="tracking-1.7px text-12px">Hours</p>
+            </div>
+            <div class="px-16px border-s-black border-s">
+              <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
+              <p class="tracking-1.7px text-12px">Minutes</p>
+            </div>
+            <div class="px-16px border-s-black border-s">
+              <h1 class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center">1</h1>
+              <p class="tracking-1.7px text-12px">Seconds</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</template>
-<script>
-export default {
+  </template>
+  
+  <script>
+
+  export default {
     data() {
-        return {
-            timeout: null,
-            lastItem: null,
-            activeIndex: 0,
-            banner: this.$settings.sections.banner
-        }
+      return {
+        activeIndex: 0,
+        banner: this.$settings.sections.banner,
+        Carousel: null,
+        Slide: null,
+      };
     },
     mounted() {
-        this.animate();
+      if (process.client) {
+        const { Carousel, Slide } = require('vue-carousel');
+        this.Carousel = Carousel; 
+        this.Slide = Slide;
+      }
     },
     methods: {
-        animate(index=null){
-            if(!this.banner.items) return;
-            if(index != null){
-                this.lastItem = this.banner.items[`item_${[this.activeIndex]}`];
-                this.activeIndex = index;
-                clearTimeout(this.timeout);
-            }else{
-                this.lastItem = this.banner.items[`item_${[this.activeIndex]}`];
-                if(this.activeIndex >= Object.keys(this.banner.items).length-1) this.activeIndex = -1;
-                this.activeIndex++;
-                this.timeout = setTimeout(() => {
-                    this.animate();
-                }, 10000);
-            }
-        }
+      animate(index) {
+        this.activeIndex = index; // Update activeIndex to the clicked indicator
+        clearTimeout(this.timeout); // Clear timeout if manual navigation occurs
+      },
     },
-}
-</script>
-<style>
-    .slider-item.last{
-        position: absolute;
-    }
-    .slider-item:not(.active):not(.last){
-        position: absolute;
-        top: 0;
-        transform: translateX(-110%);
-    }
-    .slider-item.active{
-        transform: none;
-        transition: .8s;
-    }
-</style>
+  };
+  </script>
+
+  <style>
+  .slider-item {
+    position: relative ;
+  }
+  </style>
+  

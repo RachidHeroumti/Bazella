@@ -21,6 +21,7 @@ import nuxt_plugin_http_1aad7586 from 'nuxt_plugin_http_1aad7586' // Source: ..\
 import nuxt_plugin_storeino_1c6e5088 from 'nuxt_plugin_storeino_1c6e5088' // Source: ..\\node_modules\\@storeino\\template-core\\plugins\\storeino.js (mode: 'all')
 import nuxt_plugin_init_1cb93bb5 from 'nuxt_plugin_init_1cb93bb5' // Source: ..\\node_modules\\@storeino\\template-core\\plugins\\init.js (mode: 'all')
 import nuxt_plugin_events_314f48e8 from 'nuxt_plugin_events_314f48e8' // Source: ..\\node_modules\\@storeino\\template-core\\plugins\\events.js (mode: 'all')
+import nuxt_plugin_carousel_2496c93e from 'nuxt_plugin_carousel_2496c93e' // Source: ..\\plugins\\carousel.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -250,6 +251,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_events_314f48e8 === 'function') {
     await nuxt_plugin_events_314f48e8(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_carousel_2496c93e === 'function') {
+    await nuxt_plugin_carousel_2496c93e(app.context, inject)
   }
 
   // Lock enablePreview in context

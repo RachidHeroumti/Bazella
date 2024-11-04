@@ -3,6 +3,7 @@ module.exports = {
     darkMode: false,
     theme: {
       extend: {
+     
         fontSize: {
           '16px': '16px',
           '3.375em': '3.375em',
@@ -48,7 +49,8 @@ module.exports = {
         },
         colors: {
           black: '#000000',
-          bg_secendary :'#eef0f4'
+          bg_secendary :'#eef0f4',
+           buttons:'#333541'
         },
         letterSpacing: {
           '0.2em': '0.2em',
