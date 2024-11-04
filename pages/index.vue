@@ -3,12 +3,13 @@
     <sections-banner v-if="$settings.sections.banner.active"></sections-banner>
     <sections-counter></sections-counter>
     <sections-collections v-if="$settings.sections.collections.active"></sections-collections>
-
+    <sections-two-collections v-if="$settings.sections.collections.active"></sections-two-collections>
+    <sections-last-collections v-if="$settings.sections.collections.active"></sections-last-collections>
+    <sections-upsell-offers ></sections-upsell-offers>
     <template v-for="i in 5">
       <sections-products :key="i" :data-key="i" v-if="$settings.sections[`products_${i}`].active" :section="$settings.sections[`products_${i}`]"></sections-products>
     </template>
-    <sections-two-collections v-if="$settings.sections.collections.active"></sections-two-collections>
-    <sections-last-collections v-if="$settings.sections.collections.active"></sections-last-collections>
+  
 
     <sections-posts v-if="$settings.sections.posts.active"></sections-posts>
 
