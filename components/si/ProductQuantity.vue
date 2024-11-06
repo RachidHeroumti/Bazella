@@ -1,14 +1,14 @@
 <template>
-    <div class="flex items-center justify-center">
-        <button @click="inc(-1)" class="bg-gray-50 border py-2 px-4" :class="value > quantity.min ? 'bg-primary text-white' : ''">-</button>
-        <div class="flex">
-            <label class="relative border py-2 h-full">
-                <span class="px-2 py-4 px-5 text-center ">{{ value }}</span>
-                <input :min="quantity.min" :max="quantity.max" class="px-2 text-center absolute outline-none inset-0 bg-opacity-0 w-full h-full" v-model="value" type="number">
+    <div class="flex w-[80px] text-13.6px font-medium font-poppins text-gray-900 border border-gray-400 justify-between ">
+        <button @click="inc(-1)" class="bg-gray-50 w-full py-[6px]  " :class="value > quantity.min ? 'bg-white hover:bg-gray-100 ' : ''">-</button>
+        <div class="flex w-full  py-[6px] justify-center">
+            <label class="relative   h-full">
+                <span class="  text-center ">{{ value }}</span>
+                <input :min="quantity.min" :max="quantity.max" class=" text-center absolute outline-none inset-0 bg-opacity-0 w-full h-full" v-model="value" type="number">
             </label>
-            <span class="flex items-center bg-white border px-2" v-if="quantity.unit">{{ quantity.unit }}</span>
+            <span class="flex items-center bg-white   " v-if="quantity.unit">{{ quantity.unit }}</span>
         </div>
-        <button @click="inc(1)" class="bg-gray-50 border py-2 px-4" :class="value < quantity.instock ? 'bg-primary text-white' : ''">+</button>
+        <button @click="inc(1)" class="bg-gray-50  w-full py-[6px] " :class="value < quantity.instock ? 'bg-white hover:bg-gray-100 ' : ''">+</button>
     </div>
 </template>
 

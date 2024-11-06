@@ -48,8 +48,8 @@ export default {
     -webkit-appearance: none;
     -moz-appearance: none;
     position: relative;
-    height: 17px;
-    width: 17px;
+    height: 12px;
+    width: 12px;
     border-radius: 50%;
     z-index: 3;
     cursor: pointer;

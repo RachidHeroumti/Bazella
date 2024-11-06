@@ -44,14 +44,21 @@ X-Auth-Token: {{token}}
             "brands": []
         },
         "ids": {
-            "collections": [],
+            "collections": [
+                "671b83a1f6654f001383b34c",
+                "671b8389f6654f001383b349",
+                "671b8389f6654f001383b349"
+            ],
             "products": [],
             "images": [
                 "6724a6c7aa5613f749c77d9a",
-                "671a6584f6654f001383af6a",
-                "671a6584f6654f001383af67",
+                "672a0c2f973a208088b529ba",
+                "672895d3aa5613f749c79a3e",
+                "672895d4aa5613f749c79a42",
                 "672895d4aa5613f749c79a48",
-                "672895d5aa5613f749c79a4d"
+                "672895d5aa5613f749c79a4d",
+                "672895d3aa5613f749c79a40",
+                "672895d5aa5613f749c79a4b"
             ],
             "menus": [
                 "671face5f6654f001383ba34",
@@ -249,7 +256,7 @@ X-Auth-Token: {{token}}
                                     {
                                         "name": "left_menu",
                                         "note": "",
-                                        "path": "sections.header.left",
+                                        "path": "sections.header.left_menu",
                                         "type": "tc_menu",
                                         "translatable": false,
                                         "value": "671face5f6654f001383ba34"
@@ -532,7 +539,7 @@ X-Auth-Token: {{token}}
                                         "name": "banner_image",
                                         "path": "sections.banner.items.item_0.image",
                                         "type": "tc_image",
-                                        "value": null
+                                        "value": "672a0c2f973a208088b529ba"
                                     },
                                     {
                                         "name": "banner_title",
@@ -579,7 +586,7 @@ X-Auth-Token: {{token}}
                                         "name": "banner_image",
                                         "path": "sections.banner.items.item_1.image",
                                         "type": "tc_image",
-                                        "value": "671a6584f6654f001383af6a"
+                                        "value": "672895d3aa5613f749c79a3e"
                                     },
                                     {
                                         "name": "banner_title",
@@ -626,7 +633,7 @@ X-Auth-Token: {{token}}
                                         "name": "banner_image",
                                         "path": "sections.banner.items.item_2.image",
                                         "type": "tc_image",
-                                        "value": "671a6584f6654f001383af67"
+                                        "value": "672895d4aa5613f749c79a42"
                                     },
                                     {
                                         "name": "banner_title",
@@ -1570,21 +1577,21 @@ X-Auth-Token: {{token}}
                         "icon": "select_all",
                         "blocks": [
                             {
-                                "name": "banner",
+                                "name": "items[0]",
                                 "values": [
                                     {
                                         "name": "Amount",
                                         "note": "",
-                                        "path": "sections.upsellbanner.amount",
+                                        "path": "sections.upsellbanner.items.item_0.amount",
                                         "type": "tc_input",
                                         "translatable": false,
-                                        "value": "",
+                                        "value": "50",
                                         "inputType": "number"
                                     },
                                     {
                                         "name": "Text",
                                         "note": "",
-                                        "path": "sections.upsellbanner.text",
+                                        "path": "sections.upsellbanner.items.item_0.text",
                                         "type": "tc_input",
                                         "translatable": false,
                                         "value": "your value"
@@ -1592,14 +1599,82 @@ X-Auth-Token: {{token}}
                                     {
                                         "name": "image",
                                         "note": "",
-                                        "path": "sections.upsellbanner.image",
+                                        "path": "sections.upsellbanner.items.item_0.image",
                                         "type": "tc_image",
                                         "translatable": false,
-                                        "value": null
+                                        "value": "672895d3aa5613f749c79a40"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "upsell_banner_options",
+                                "values": [
+                                    {
+                                        "name": "show_upsell_banner",
+                                        "note": "",
+                                        "path": "sections.upsellbanner.active",
+                                        "type": "tc_checkbox",
+                                        "translatable": false,
+                                        "value": true
+                                    }
+                                ],
+                                "fixed": true
+                            },
+                            {
+                                "name": "items[1]",
+                                "values": [
+                                    {
+                                        "name": "Amount",
+                                        "path": "sections.upsellbanner.items.item_1.amount",
+                                        "type": "tc_input",
+                                        "value": "25"
+                                    },
+                                    {
+                                        "name": "Text",
+                                        "path": "sections.upsellbanner.items.item_1.text",
+                                        "type": "tc_input",
+                                        "translatable": true,
+                                        "value": "Default title",
+                                        "translate": "Default title"
+                                    },
+                                    {
+                                        "name": "image",
+                                        "note": "",
+                                        "path": "sections.upsellbanner.items.item_1.image",
+                                        "type": "tc_image",
+                                        "translatable": false,
+                                        "value": "672895d5aa5613f749c79a4b"
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "pushable": true,
+                        "default": {
+                            "name": "items[9]",
+                            "values": [
+                                {
+                                    "name": "Amount",
+                                    "path": "sections.upsellbanner.items.item_4.amount",
+                                    "type": "tc_input",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "Text",
+                                    "path": "sections.upsellbanner.items.item_4.text",
+                                    "type": "tc_input",
+                                    "translatable": true,
+                                    "value": "Default title"
+                                },
+                                {
+                                    "name": "image",
+                                    "note": "",
+                                    "path": "sections.upsellbanner.items.item_4.image",
+                                    "type": "tc_image",
+                                    "translatable": false,
+                                    "value": null
+                                }
+                            ]
+                        }
                     },
                     {
                         "name": "collection_section_2",
@@ -1627,10 +1702,13 @@ X-Auth-Token: {{token}}
                                     {
                                         "name": "selected_collection",
                                         "note": "",
-                                        "path": "sections.collection_section_2.collection.items",
+                                        "path": "sections.collection_section_2.items",
                                         "type": "tc_collection",
                                         "translatable": false,
-                                        "value": []
+                                        "value": [
+                                            "671b83a1f6654f001383b34c",
+                                            "671b8389f6654f001383b349"
+                                        ]
                                     }
                                 ]
                             }
@@ -1649,7 +1727,7 @@ X-Auth-Token: {{token}}
                                         "path": "sections.collection_section_3.active",
                                         "type": "tc_checkbox",
                                         "translatable": false,
-                                        "value": ""
+                                        "value": true
                                     },
                                     {
                                         "name": "title",
@@ -1662,10 +1740,31 @@ X-Auth-Token: {{token}}
                                     {
                                         "name": "selected_collection",
                                         "note": "",
-                                        "path": "sections.collection_section_2.collection.items",
+                                        "path": "sections.collection_section_3.items",
                                         "type": "tc_collection",
                                         "translatable": false,
-                                        "value": []
+                                        "value": [
+                                            "671b8389f6654f001383b349"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "one_post",
+                        "icon": "select_all",
+                        "blocks": [
+                            {
+                                "name": "post",
+                                "values": [
+                                    {
+                                        "name": "",
+                                        "note": "",
+                                        "path": "temp.newField",
+                                        "type": "tc_input",
+                                        "translatable": false,
+                                        "value": "your value"
                                     }
                                 ]
                             }
@@ -2156,6 +2255,19 @@ X-Auth-Token: {{token}}
                                         "translatable": true,
                                         "value": "No products found",
                                         "translate": "No products found"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "shop_collections",
+                                "values": [
+                                    {
+                                        "name": "new value",
+                                        "note": "",
+                                        "path": "sections.shop.collections",
+                                        "type": "tc_collection",
+                                        "translatable": false,
+                                        "value": []
                                     }
                                 ]
                             }
@@ -3190,7 +3302,7 @@ X-Auth-Token: {{token}}
                     "social": ""
                 },
                 "menu": null,
-                "left": "671face5f6654f001383ba34",
+                "left_menu": "671face5f6654f001383ba34",
                 "right_menu": "671fad5bf6654f001383ba3d",
                 "pages_menu": null
             },
@@ -3226,7 +3338,7 @@ X-Auth-Token: {{token}}
                 "active": true,
                 "items": {
                     "item_0": {
-                        "image": null,
+                        "image": "672a0c2f973a208088b529ba",
                         "title": "Default title",
                         "description": "Default description",
                         "button": {
@@ -3236,7 +3348,7 @@ X-Auth-Token: {{token}}
                         }
                     },
                     "item_1": {
-                        "image": "671a6584f6654f001383af6a",
+                        "image": "672895d3aa5613f749c79a3e",
                         "title": "Default title",
                         "description": "Default description",
                         "button": {
@@ -3246,7 +3358,7 @@ X-Auth-Token: {{token}}
                         }
                     },
                     "item_2": {
-                        "image": "671a6584f6654f001383af67",
+                        "image": "672895d4aa5613f749c79a42",
                         "title": "Default title",
                         "description": "Default description",
                         "button": {
@@ -3397,19 +3509,34 @@ X-Auth-Token: {{token}}
                 "to": "17-11-2024"
             },
             "upsellbanner": {
-                "amount": "",
-                "text": "your value",
-                "image": null
+                "items": {
+                    "item_0": {
+                        "amount": "50",
+                        "text": "your value",
+                        "image": "672895d3aa5613f749c79a40"
+                    },
+                    "item_1": {
+                        "amount": "25",
+                        "text": "Default title",
+                        "image": "672895d5aa5613f749c79a4b"
+                    }
+                },
+                "active": true
             },
             "collection_section_2": {
                 "active": true,
                 "title": "your value",
-                "items": []
+                "items": [
+                    "671b83a1f6654f001383b34c",
+                    "671b8389f6654f001383b349"
+                ]
             },
             "collection_section_3": {
                 "active": true,
                 "title": "your value",
-                "items": []
+                "items": [
+                    "671b8389f6654f001383b349"
+                ]
             },
             "product": {
                 "add_to_cart": {
@@ -3500,7 +3627,8 @@ X-Auth-Token: {{token}}
                     "next_text": "Next",
                     "prev_text": "Prev"
                 },
-                "empty_text": "No products found"
+                "empty_text": "No products found",
+                "collections": []
             },
             "blog": {
                 "sidebar": {
@@ -3563,6 +3691,9 @@ X-Auth-Token: {{token}}
                     "back_to_shop_text": "Back to shop"
                 }
             }
+        },
+        "temp": {
+            "newField": "your value"
         }
     }
 }

@@ -1,35 +1,46 @@
 <template>
     <div>
-        <div class="flex justify-between flex-wrap relative mb-2 p-2 shadow">
-            <div class="flex md:w-1/2">
-                <div class="flex items-center w-full">
-                    <nuxt-link class="w-1/4 flex" :to="`/products/${item.slug}`">
-                        <si-image class="border-2 border-gray-300 rounded-md object-contain w-full" :src="item.image" :alt="item.name"/>
+        <div class="flex w-full flex-wrap relative mb-2 p-2 font-poppins text-gray-900 font-light">
+            <div class="flex w-full justify-between " > 
+                <div class="flex items-center w-full  h-[150px] sm:h-[200px]" >
+                    <nuxt-link class=" flex h-full " :to="`/products/${item.slug}`">
+                        <si-image class=" w-[100px]  object-contain sm:w-[150px] h-[150px] sm:h-[200px]" :src="item.image" :alt="item.name"/>
                     </nuxt-link>
-                    <div class="w-3/4">
-                        <div class="flex flex-col p-2">
-                            <nuxt-link class="text-2xl" :to="`/products/${item.slug}`">{{ item.name }}</nuxt-link>
-                            <nuxt-link class="text-gray-600" :to="`/products/${item.slug}`"><b v-if="item.variant">{{ item.variant.name }}</b></nuxt-link>
+                    <div class=" px-5px md:px-10px h-full"> 
+                        <div class="flex flex-col   h-full ">
+                            <div class=" h-full flex flex-col ">
+                                <nuxt-link class=" text-16px    mb-2" :to="`/products/${item.slug}`">{{ item.name }}</nuxt-link>
+                            <nuxt-link class="" :to="`/products/${item.slug}`"><span v-if="item.variant">{{ item.variant.name }}</span></nuxt-link>
+                            
+                            </div>
+                            <div class=" h-full ">
+                                <si-product-quantity @selected="quantitySelected" :quantity="item.quantity"/>
                             <div v-if="item.upsell">
                                 <b class="bg-red-700 text-white inline-block p-1 rounded-lg">-{{ item.upsell.value }} {{ item.upsell.type == 'percentage' ? '%' : $store.state.currency.symbol }}</b>
                             </div>
+
+                            <span class="  mt-10px  cursor-pointer text-13.6px " @click="remove">Remove</span>
+                            </div>
+                          
+                            
                         </div>
                     </div>
+
                 </div> 
+                <div class=" h-full flex justify-center items-center w-[50px]"> 
+                  <span class=" text-16px font-twentieth-century">{{ item.price }} {{ $store.state.currency.symbol }}</span>
+                </div>
             </div>
-            <div class="flex flex-col justify-center w-1/2 md:w-1/4 bg-gray-100 md:bg-white p-2">
-                <si-product-quantity @selected="quantitySelected" :quantity="item.quantity"/>
-            </div>
-            <div class="flex flex-col justify-center w-1/2 md:w-1/4 bg-gray-100 md:bg-white p-2 relative">
+
+            <!-- <div class="flex flex-col justify-center w-1/3 md:w-1/4 bg-gray-100 md:bg-white p-2 relative">
                 <div class="text-gray-600">
-                    <b class="text-xl">{{ item.quantity.value }} x</b>
-                    <b class="text-xl">{{ item.price }} {{ $store.state.currency.symbol }}</b>
+                    <b class="text-xl">{{ item.quantity.value }} x</b>  
                 </div>
                 <h2 class="text-2xl text-red-700">{{ item.total }} {{ $store.state.currency.symbol }}</h2>
-            </div>
-            <div class="absolute top-0 right-0">
-                <button class="w-8 h-8 justify-center items-center bg-white rounded-md shadow" @click="remove">&times;</button>
-            </div>
+            </div> -->
+
+
+           
         </div>
     </div>
 </template>

@@ -4,7 +4,7 @@
   <!-- collection-section-1 -->
   <div
     v-if="type == 'simple'"
-    class="w-[218px] h-[327px] md:h-[421px] md:w-[281px] relative flex justify-center items-center overflow-hidden"
+    class="w-[218px] h-[327px] md:h-[421px] md:w-[281px] relative flex justify-center items-center overflow-hidden mx-2"
   >
     <!-- Link around the image -->
     <nuxt-link

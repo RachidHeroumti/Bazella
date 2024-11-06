@@ -11,7 +11,15 @@ export default {
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap'
-      }
+      },
+      {  
+        rel: 'stylesheet',  
+        href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap'  
+      } ,
+      {  
+        rel: 'stylesheet',  
+        href: 'https://fonts.googleapis.com/css2?family=Twentieth+Century:wght@300&display=swap'  
+      }  
     ]
   },
   target: 'server',

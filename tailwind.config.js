@@ -61,9 +61,11 @@ module.exports = {
           '400': '400',
         },
         fontFamily: {
-          'twentieth-century': ['Twentieth Century', 'sans-serif'],
           'tenor-sans': ['Tenor Sans', 'sans-serif'],
           'tenor': ['Tenor Sans', 'sans-serif'],
+         'poppins': ['Poppins', 'sans-serif']  ,
+         'twentieth-century': ['Twentieth Century', 'sans-serif']  
+
         },
         width: {
           '90px': '90px',

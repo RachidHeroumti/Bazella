@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="relative flex mb-2">
+    <div class="relative flex m-3 md:mb-10">
       <transition name="slideleft">
         <div
           :class="showSideBar ? 'show' : 'hide'"
@@ -10,7 +10,7 @@
             class="fixed inset-0 block bg-black bg-opacity-50 md:hidden"
             @click="showSideBar = false"
           ></div>
-          <div class="relative flex flex-col h-full bg-white border-r">
+          <div class="relative flex flex-col h-full bg-white me-5 pt-[35px]">
             <div class="flex justify-end w-full md:hidden">
               <button
                 @click="showSideBar = false"
@@ -38,11 +38,29 @@
 
             <!--collors-->
             <h2
-              class=" text-12px font-tenor-sans px-15px mb-2"
+              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.colors.active"
+              @click="showCollors = !showCollors"
             >
-              {{ $settings.sections.shop.sidebar.colors.title }}
+              <span>{{ $settings.sections.shop.sidebar.colors.title }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: showCollors ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
             </h2>
+
             <div
               v-if="
                 $settings.sections.shop.sidebar.colors.active && loading.filters
@@ -52,7 +70,11 @@
               <si-loader></si-loader>
             </div>
             <div
-              v-if="$settings.sections.shop.sidebar.colors.active && filters"
+              v-if="
+                $settings.sections.shop.sidebar.colors.active &&
+                filters &&
+                showCollors
+              "
               class="flex flex-wrap mx-2 mb-2"
             >
               <div
@@ -86,14 +108,31 @@
                 ></label>
               </div>
             </div>
-            <hr v-if="$settings.sections.shop.sidebar.colors.active" />
+            <hr v-if="$settings.sections.shop.sidebar.colors.active" class=" mb-5"/>
 
             <!--prices-->
             <h2
-              v-if="$settings.sections.shop.sidebar.prices.active"
-              class=" text-12px font-tenor-sans px-15px mb-2"
+              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              v-if="$settings.sections.shop.sidebar.colors.active"
+              @click="showPrice = !showPrice"
             >
-              {{ $settings.sections.shop.sidebar.prices.title }}
+              <span>{{ $settings.sections.shop.sidebar.prices.title }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: showPrice ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
             </h2>
             <div
               v-if="loading.filters"
@@ -102,7 +141,11 @@
               <si-loader></si-loader>
             </div>
             <div
-              v-if="$settings.sections.shop.sidebar.prices.active && filters"
+              v-if="
+                $settings.sections.shop.sidebar.prices.active &&
+                filters &&
+                showPrice
+              "
               class="flex flex-col mb-2"
               dir="ltr"
             >
@@ -112,14 +155,32 @@
                 :max="filters.prices.max"
               />
             </div>
-            <hr v-if="$settings.sections.shop.sidebar.prices.active" />
+            <hr v-if="$settings.sections.shop.sidebar.prices.active" class=" mb-5" />
 
             <!--sizes-->
+
             <h2
-              class=" text-12px font-tenor-sans px-15px mb-2"
-              v-if="$settings.sections.shop.sidebar.sizes.active"
+              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              v-if="$settings.sections.shop.sidebar.colors.active"
+              @click="showSizes = !showSizes"
             >
-              {{ $settings.sections.shop.sidebar.sizes.title }}
+              <span>{{ $settings.sections.shop.sidebar.sizes.title }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: showSizes ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
             </h2>
             <div
               v-if="
@@ -129,8 +190,13 @@
             >
               <si-loader></si-loader>
             </div>
+
             <div
-              v-if="$settings.sections.shop.sidebar.sizes.active && filters"
+              v-if="
+                $settings.sections.shop.sidebar.sizes.active &&
+                filters &&
+                showSizes
+              "
               class="flex flex-col mx-2 mb-2"
             >
               <div
@@ -140,8 +206,8 @@
                 :class="
                   params['options.values.value1'] &&
                   params['options.values.value1'].indexOf(item.value1) >= 0
-                    ? 'bg.white text-black '
-                    : 'bg-gray-200'
+                    ? 'bg-white text-black text-16px font-tenor-sans '
+                    : ''
                 "
               >
                 <input
@@ -156,18 +222,53 @@
                   "
                   type="checkbox"
                 />
-                <label class="px-2 cursor-pointer" :for="item.value1">{{
-                  item.value1
-                }}</label>
+
+                <label
+                  class="size-label"
+                  :class="clickedIndex === i ? 'bg-black ' : ' bg-white'"
+                  @click="toggleBackground(i)"
+                  :for="item.value1"
+                >
+                </label>
+
+                <label
+                  class="px-2 cursor-pointer hover:underline text-16px font-tenor-sans px-15p"
+                  :for="item.value1"
+                  :class="clickedIndex === i ? 'underline' : 'no-underline'"
+                >
+                  {{ item.value1 }}
+                </label>
               </div>
             </div>
-            <hr v-if="$settings.sections.shop.sidebar.sizes.active" />
+            <hr v-if="$settings.sections.shop.sidebar.sizes.active" class=" mb-5"/>
+
             <!--collections-->
             <h2
+              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.collections.active"
-              class=" text-12px font-tenor-sans px-15px mb-2"
+              @click="showCollections = !showCollections"
             >
-              {{ $settings.sections.shop.sidebar.collections.title }}
+              <span>{{
+                $settings.sections.shop.sidebar.collections.title
+              }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: showCollections
+                      ? 'rotate(90deg)'
+                      : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
             </h2>
             <div
               v-if="$settings.sections.shop.sidebar.collections.active"
@@ -179,80 +280,56 @@
               >
                 <si-loader></si-loader>
               </div>
+
               <div v-for="(item, i) in collections" :key="i" class="px-2">
-                <div class="flex items-center">
+                <div
+                  v-if="showCollections"
+                  class="flex items-center m-0.5 rounded-md"
+                  :class="
+                    params['collections.slug-in'] &&
+                    params['collections.slug-in'].indexOf(item.slug) >= 0
+                      ? 'bg-white text-black text-16px font-tenor-sans'
+                      : ''
+                  "
+                >
                   <input
-                    v-if="item.childrens && item.childrens.length == 0"
-                    class="w-4 h-4 mx-1"
+                    hidden
+                    :id="item.slug"
                     :checked="
                       params['collections.slug-in'] &&
                       params['collections.slug-in'].indexOf(item.slug) >= 0
                     "
-                    :id="item.slug"
                     @change="
                       setParams($event, 'collections.slug-in', item.slug)
                     "
                     type="checkbox"
                   />
+
                   <label
-                    @click="setActive(i + 'fit', i + 'ret')"
-                    v-if="item.childrens && item.childrens.length > 0"
-                    class=" text-16px text-black font-tenor-sans cursor-pointer collec-name"
+                    class="collection-label"
+                    :class="
+                      clickedCollectionIndex === i ? 'bg-black' : 'bg-white'
+                    "
+                    @click="toggleCollectionActive(i)"
                     :for="item.slug"
-                    >{{ item.name }}</label
                   >
+                    <!-- Add any content here if needed, like an icon or image -->
+                  </label>
+
                   <label
-                    v-if="item.childrens && item.childrens.length == 0"
-                    class=" text-16px text-black font-tenor-sans cursor-pointer collec-name"
+                    class="px-2 cursor-pointer hover:underline text-16px font-tenor-sans px-15p"
+                    @click="toggleCollectionActive(i)"
                     :for="item.slug"
-                    >{{ item.name }}</label
+                    :class="
+                      clickedCollectionIndex === i
+                        ? 'underline'
+                        : 'no-underline'
+                    "
                   >
-                  <svg
-                    @click="setActive(i + 'fit', i + 'ret')"
-                    :id="i + 'ret'"
-                    v-if="item.childrens && item.childrens.length > 0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs"
-                    version="1.1"
-                    width="15"
-                    height="15"
-                    x="0"
-                    y="0"
-                    viewBox="0 0 451.847 451.847"
-                    style="enable-background: new 0 0 512 512; cursor: pointer"
-                    xml:space="preserve"
-                    class="rotated"
-                  >
-                    <g>
-                      <g xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"
-                          fill="#7a7575"
-                          data-original="#000000"
-                          style=""
-                          class=""
-                        />
-                      </g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                      <g xmlns="http://www.w3.org/2000/svg"></g>
-                    </g>
-                  </svg>
+                    {{ item.name }}
+                  </label>
                 </div>
-                <div
+                <!-- <div
                   :id="i + 'fit'"
                   class="fit-collapsible"
                   :class="item.childrens.length > 0 ? 'sub-collections' : ''"
@@ -281,14 +358,35 @@
                       >
                     </li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>
-            <hr v-if="$settings.sections.shop.sidebar.collections.active" />
+
+            <hr v-if="$settings.sections.shop.sidebar.collections.active" class=" mb-5" />
 
             <!--tags-->
-            <h2 class="  text-12px font-tenor-sans px-15px mb-2" v-if="$settings.sections.shop.sidebar.tags.active">
-              {{ $settings.sections.shop.sidebar.tags.title }}
+            <h2
+              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              v-if="$settings.sections.shop.sidebar.tags.active"
+              @click="showTags = !showTags"
+            >
+              <span>{{ $settings.sections.shop.sidebar.tags.title }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: showTags ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
             </h2>
             <div
               v-if="
@@ -298,16 +396,27 @@
             >
               <si-loader></si-loader>
             </div>
+
             <div
-              v-if="$settings.sections.shop.sidebar.tags.active && filters"
+              v-if="
+                $settings.sections.shop.sidebar.tags.active &&
+                filters &&
+                showTags
+              "
               class="flex flex-col mb-2"
             >
               <div
                 v-for="(tag, i) in filters.tags"
                 :key="i"
-                class="flex items-center px-2"
+                class="flex items-center m-0.5 rounded-md"
+                :class="
+                  params['tags-in'] && params['tags-in'].indexOf(tag) >= 0
+                    ? 'bg-white text-black text-16px font-tenor-sans'
+                    : ''
+                "
               >
                 <input
+                  hidden
                   class="w-4 h-4 mx-1"
                   :checked="
                     params['tags-in'] && params['tags-in'].indexOf(tag) >= 0
@@ -316,18 +425,46 @@
                   @change="setParams($event, 'tags-in', tag)"
                   type="checkbox"
                 />
-                <label class="capitalize cursor-pointer" :for="`tag_${tag}`">{{
-                  tag
-                }}</label>
+                <label
+                  class="size-label"
+                  :class="clickedTagIndex === i ? 'bg-black' : 'bg-white'"
+                  @click="toggleTagActive(i)"
+                  :for="`tag_${tag}`"
+                ></label>
+                <label
+                  class="px-2 cursor-pointer hover:underline text-16px font-tenor-sans px-15p"
+                  :for="`tag_${tag}`"
+                  @click="toggleTagActive(i)"
+                >
+                  {{ tag }}
+                </label>
               </div>
             </div>
-            <hr v-if="$settings.sections.shop.sidebar.tags.active" />
+
+            <hr v-if="$settings.sections.shop.sidebar.tags.active" class=" mb-5"/>
             <!--brands-->
             <h2
-              class="  text-12px font-tenor-sans px-15px"
+              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.brands.active"
+              @click="showBrands = !showBrands"
             >
-              {{ $settings.sections.shop.sidebar.brands.title }}
+              <span>{{ $settings.sections.shop.sidebar.brands.title }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: showBrands ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
             </h2>
             <div class="flex flex-col mb-2">
               <div
@@ -339,7 +476,11 @@
               >
                 <si-loader></si-loader>
               </div>
-              <div v-if="$settings.sections.shop.sidebar.brands.active">
+              <div
+                v-if="
+                  $settings.sections.shop.sidebar.brands.active && showBrands
+                "
+              >
                 <div
                   v-for="(item, i) in brands"
                   :key="i"
@@ -364,10 +505,16 @@
           </div>
         </div>
       </transition>
+
       <div class="w-full md:w-3/4">
-        <div class="bg-white">
+      <div class="bg-white">
           <div class="border-b">
-            <div class="flex items-center justify-between p-2">
+            <div class="flex items-center justify-between p-2 h-[55px]">
+              <div>
+                <span class="hidden md:flex text-16px font-tenor tt">
+                  {{ items.length }} <span class="px-2">products</span>
+                </span>
+              </div>
               <button
                 @click="showSideBar = true"
                 aria-label="Search button"
@@ -378,15 +525,23 @@
                 <span class="w-2 my-0.5 h-0.5 bg-gray-800"></span>
                 <span class="w-1 my-0.5 h-0.5 bg-gray-800"></span>
               </button>
-              <select
-                class="p-2 bg-white rounded shadow outline-none"
-                v-model="params.sort"
-              >
-                <option v-for="(sort, i) in sorts" :key="i" :value="sort.field">
-                  {{ sort.name }}
-                </option>
-              </select>
-              <div class="flex">
+              <div class="w-full flex justify-end">
+                <select
+                  class="p-2 bg-white border text-16px font-tenor-sans tt outline-none py-10px px-20px"
+                  v-model="params.sort"
+                >
+                  <option
+                    class="hover:underline"
+                    v-for="(sort, i) in sorts"
+                    :key="i"
+                    :value="sort.field"
+                  >
+                    {{ sort.name }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- <div class="flex">
                 <button
                   v-for="(grid, i) in girds"
                   :key="i"
@@ -404,8 +559,9 @@
                     style="margin: 1px; width: 4px; height: 4px"
                   ></span>
                 </button>
-              </div>
+              </div> -->
             </div>
+            
           </div>
           <div
             v-if="loading.products"
@@ -429,61 +585,76 @@
               <si-product :item="item"></si-product>
             </div>
           </div>
-          <div
-            v-if="items.length > 0"
-            class="flex items-center justify-end w-full p-2 bg-white border-t"
-          >
-            <button
-              class="flex items-center p-2 text-white bg-primary"
-              @click="getItems(paginate.current_page - 1)"
+          <div class="flex items-center justify-center w-full p-2">
+            <ul
+              class="flex space-x-2 font-poppins font-base text-13p text-gray-500"
             >
-              <svg
-                class="h-4 translate"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="chevron-left"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
+              <li
+                v-if="paginate.current_page > 1"
+                class="h-10 w-10 cursor-pointer text-base bg-black text-center text-white flex justify-center items-center"
+                @click="getItems(paginate.current_page - 1)"
               >
-                <path
-                  fill="currentColor"
-                  d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
-                ></path>
-              </svg>
-              <span>&ensp;</span>
-              <span>{{ $settings.sections.shop.pagination.prev_text }}</span>
-            </button>
-            <span>&ensp;</span>
-            <span>{{ paginate.current_page }}/{{ paginate.last_page }}</span>
-            <span>&ensp;</span>
-            <button
-              class="flex items-center p-2 text-white bg-primary"
-              @click="getItems(paginate.current_page + 1)"
-            >
-              <span>{{ $settings.sections.shop.pagination.next_text }}</span>
-              <span>&ensp;</span>
-              <svg
-                class="h-4 translate"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="chevron-right"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
+                &lt;
+              </li>
+              <li
+                class="h-10 w-10 cursor-pointer hover:text-black flex justify-center items-center"
+                @click="getItems(1)"
               >
-                <path
-                  fill="currentColor"
-                  d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-                ></path>
-              </svg>
-            </button>
+                1
+              </li>
+              <li
+                class="h-10 w-10 cursor-pointer hover:text-black flex justify-center items-center"
+                @click="getItems(2)"
+              >
+                2
+              </li>
+              <li
+                class="h-10 w-10 cursor-pointer hover:text-black flex justify-center items-center"
+                @click="getItems(3)"
+              >
+                3
+              </li>
+              <li
+                class="h-10 w-10 cursor-pointer hover:text-black flex justify-center items-center"
+                @click="getItems(4)"
+              >
+                4
+              </li>
+              <li
+                class="h-10 w-10 cursor-pointer hover:text-black flex justify-center items-center"
+                @click="getItems(5)"
+              >
+                5
+              </li>
+              <li
+                class="h-10 w-10 cursor-pointer text-base bg-black text-center text-white flex justify-center items-center"
+                @click="getItems(paginate.current_page + 1)"
+              >
+                &gt;
+              </li>
+            </ul>
+            <!--
+                        <button class="flex items-center p-2 text-white bg-primary" @click="getItems(paginate.current_page-1)">
+                            <svg class="h-4 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg>
+                            <span>&ensp;</span>
+                            <span>{{ $settings.sections.shop.pagination.prev_text }}</span>
+                        </button>
+                        <span>&ensp;</span>
+                        <span>{{paginate.current_page}}/{{paginate.last_page}}</span>
+                        <span>&ensp;</span>
+                        <button class="flex items-center p-2 text-white bg-gray-900" @click="getItems(paginate.current_page+1)">
+                            <span>{{ $settings.sections.shop.pagination.next_text }}</span>
+                            <span>&ensp;</span>
+                            <svg class="h-4 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
+                        </button>
+                        -->
           </div>
         </div>
       </div>
     </div>
+    <sections-two-collections v-if="$settings.sections.collections.active"></sections-two-collections>
+    <sections-upsell-offers ></sections-upsell-offers>
+    <sections-posts v-if="$settings.sections.posts.active"></sections-posts>
   </div>
 </template>
 <script>
@@ -496,6 +667,15 @@ export default {
         collections: true,
         brands: true,
       },
+      clickedCollectionIndex: null,
+      clickedIndex: null,
+      clickedTagIndex: null,
+      showCollors: false,
+      showPrice: false,
+      showSizes: false,
+      showCollections: false,
+      showTags: false,
+      showBrands: false,
       query: {},
       param: [],
       filters: null,
@@ -634,6 +814,19 @@ export default {
     this.subCollections();
   },
   methods: {
+    toggleBackground(index) {
+      console.log("index : ", index);
+      this.clickedIndex = this.clickedIndex === index ? null : index;
+    },
+    toggleCollectionActive(index) {
+      console.log("coll-ind", index);
+      this.clickedCollectionIndex =
+        this.clickedCollectionIndex === index ? null : index;
+    },
+    toggleTagActive(index) {
+      // Toggle the clicked index
+      this.clickedTagIndex = this.clickedTagIndex === index ? null : index;
+    },
     subCollections() {
       for (let itm of this.collections) {
         if (itm.childrens && itm.childrens.length > 0) itm.childrens = [];
@@ -676,40 +869,40 @@ export default {
           this.params[key] = this.params[key].filter((item) => item !== value);
         }
       }
-      for (const key in this.params) {
-        switch (key) {
-          case "collections.slug-in":
-            this.param = this.params[key];
-            break;
-          case "price.salePrice-from":
-            this.query["price-from"] = this.params[key];
-            break;
-          case "price.salePrice-to":
-            this.query["price-to"] = this.params[key];
-            break;
-          case "options.values.value1":
-            this.query["colors-size"] = this.params[key];
-            break;
-          case "tags-in":
-            this.query["tags"] = this.params[key];
-            break;
-          case "brand.slug-in":
-            this.query["brands"] = this.params[key];
-            break;
-          case "page":
-            this.query["page"] = [this.params[key]];
-            break;
-        }
-      }
-      let url = `/shop/`;
-      url += this.param.length > 0 ? [...new Set(this.param)].join(",") : "";
-      for (const key in this.query) {
-        url += url.indexOf("?") == -1 ? "?" : "&";
-        if (typeof this.query[key] == "object") {
-          url += `${key}=${this.query[key].join(",")}`;
-        } else url += `${key}=${this.query[key]}`;
-      }
-      window.history.pushState({}, "", url);
+      //   for (const key in this.params) {
+      //     switch (key) {
+      //       case "collections.slug-in":
+      //         this.param = this.params[key];
+      //         break;
+      //       case "price.salePrice-from":
+      //         this.query["price-from"] = this.params[key];
+      //         break;
+      //       case "price.salePrice-to":
+      //         this.query["price-to"] = this.params[key];
+      //         break;
+      //       case "options.values.value1":
+      //         this.query["colors-size"] = this.params[key];
+      //         break;
+      //       case "tags-in":
+      //         this.query["tags"] = this.params[key];
+      //         break;
+      //       case "brand.slug-in":
+      //         this.query["brands"] = this.params[key];
+      //         break;
+      //       case "page":
+      //         this.query["page"] = [this.params[key]];
+      //         break;
+      //     }
+      //   }
+      //   let url = `/shop/`;
+      //   url += this.param.length > 0 ? [...new Set(this.param)].join(",") : "";
+      //   for (const key in this.query) {
+      //     url += url.indexOf("?") == -1 ? "?" : "&";
+      //     if (typeof this.query[key] == "object") {
+      //       url += `${key}=${this.query[key].join(",")}`;
+      //     } else url += `${key}=${this.query[key]}`;
+      //   }
+      //   window.history.pushState({}, "", url);
     },
     async getFilters() {
       this.filters = null;
@@ -766,6 +959,52 @@ export default {
 };
 </script>
 <style>
+.size-label {
+  width: 12px;
+  height: 12px;
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0px 2px white, 0 0 0px 2px rgb(122, 121, 121);
+  transition: box-shadow 0.3s;
+}
+
+.size-label.active {
+  box-shadow: 0 0 0px 2px white, 0 0 0px 2px black;
+}
+.collection-label {
+  width: 12px; /* Adjust as needed */
+  height: 12px; /* Adjust as needed */
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0px 2px white, 0 0 0px 2px rgb(122, 121, 121);
+  transition: box-shadow 0.3s;
+}
+
+.collection-label.active {
+  box-shadow: 0 0 0px 2px white, 0 0 0px 2px black;
+}
+.size-label {
+  width: 12px;
+  height: 12px;
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0px 2px white, 0 0 0px 2px rgb(122, 121, 121);
+  transition: box-shadow 0.3s;
+}
+
+.size-label.active {
+  box-shadow: 0 0 0px 2px white, 0 0 0px 2px black;
+}
+
 .color-option label {
   width: 30px;
   height: 30px;
@@ -773,20 +1012,14 @@ export default {
   margin-right: 6px;
   box-shadow: 0 0 0px 2px white, 0 0 0px 3px rgb(122, 121, 121);
 }
-.color-option label:hover {  
-  box-shadow:  0 0 0px 2px white,0 0 0px 3px rgb(30, 30, 30);
+.color-option label:hover {
+  box-shadow: 0 0 0px 2px white, 0 0 0px 3px rgb(30, 30, 30);
   margin-left: 6px;
   margin-right: 6px;
-  width: 30px;
-  height: 30px;   
-}  
+}
 .color-option.active label {
   color: transparent;
-  box-shadow: 0 0 0px 2px white, 0 0 0px 4px black;
-  margin-left: 6px;
-  margin-right: 6px;
-  width: 30px;
-  height: 30px;
+  box-shadow: 0 0 0px 2px white, 0 0 0px 3px black;
 }
 
 .slideleft-enter-active {
