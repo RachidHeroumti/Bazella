@@ -1,10 +1,10 @@
 <template>
 
 
-  <!-- collection-section-1 -->
+  <!-- collection simple -->
   <div
     v-if="type == 'simple'"
-    class="w-[218px] h-[327px] md:h-[421px] md:w-[281px] relative flex justify-center items-center overflow-hidden mx-2"
+    class="w-[218px] h-[327px] md:h-[421px] md:w-[281px]  relative flex justify-center items-center overflow-hidden mx-2"
   >
     <!-- Link around the image -->
     <nuxt-link
@@ -24,7 +24,8 @@
     <div class="absolute left-0 w-full flex items-center justify-center z-50">
       <nuxt-link class="flex justify-center w-full" :to="computedLink">
         <span
-          class="p-1 m-auto flex justify-center items-center px-3 leading-4 text-center text-black font-normal bg-white font-tenor-sans text-[16px] tracking-0.2em h-32px md:h-36px"
+          class="p-1 m-auto flex justify-center items-center px-3 leading-4 text-center text-black font-normal bg-white text-14px font-poppins tracking-0.25rem uppercase 
+          h-32px md:h-36px"
         >
           {{ item.name }}
           <span v-if="item.childrens.length > 0">
@@ -39,7 +40,7 @@
    <!-- collection-section-2 -->
   <div
     v-else-if="type == 'two-collections'"
-    class="w-full  px-10px py-10px h-[500px] relative flex justify-center items-center overflow-hidden"
+    class="w-full  px-10px py-10px h-[350px]  md:h-[500px] relative flex justify-center items-center overflow-hidden "
   >
     <nuxt-link
       class="flex pb-full w-full h-full object-cover"
@@ -55,24 +56,22 @@
     </nuxt-link>
 
     <!-- Overlay with Item Name -->
-    <div class="absolute left-0 w-full flex items-center justify-center z-50 gap-10px">
+    <div class="absolute left-0 w-full flex  items-center justify-center z-50 md:gap-10px gap-5px">
       <nuxt-link class="flex" to="/shop">
         <span
         style="background-color: #585065;"
-          class="p-1 m-auto flex justify-center items-center  leading-4
-           text-center text-white font-normal  font-tenor-sans text-[16px] tracking-0.2em px-20px py-3"
+          class=" m-auto flex justify-center items-center  leading-4
+           text-center text-white font-normal px-5px  p-1  md:px-20px md:py-3 text-12px md:text-14px font-poppins tracking-0.25rem uppercase "
         >
-          {{ item.name }}
-          <span v-if="item.childrens.length > 0">
-            ({{ item.childrens.length }})
-          </span>
+         shop all
+          
         </span>
       </nuxt-link>
        <nuxt-link class="flex" :to="computedLink">
         <span
         style="background-color: #585065;"
           class="p-1 m-auto flex justify-center items-center  leading-4
-           text-center text-white font-normal  font-tenor-sans text-[16px] tracking-0.2em px-20px py-3"
+           text-center text-white font-normal  px-5px   md:px-20px md:py-3 text-12px md:text-14pxfont-poppins tracking-0.25rem uppercase "
         >
           {{ item.name }}
           <span v-if="item.childrens.length > 0">
@@ -87,7 +86,7 @@
   <!-- collection-section-3 -->
   <div
     v-else-if="type == 'last-collections'"
-    class="w-full h-screen relative  flex justify-center items-center overflow-hidden"
+    class=" w-full max-h-screen relative  flex justify-center items-center overflow-hidden"
   >
     <nuxt-link
       class="flex pb-full w-full h-full"
@@ -96,7 +95,7 @@
     >
       <!-- Image Component -->
       <si-image
-        class="absolute inset-0 object-cover w-full  h-full "
+        class="absolute inset-0 object-cover w-full h-full "
         :src="item.image ? item.image.src : '/fallback-image.jpg'"
         :alt="item.name"
       />

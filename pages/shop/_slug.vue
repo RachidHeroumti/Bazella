@@ -38,7 +38,7 @@
 
             <!--collors-->
             <h2
-              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.colors.active"
               @click="showCollors = !showCollors"
             >
@@ -112,7 +112,7 @@
 
             <!--prices-->
             <h2
-              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.colors.active"
               @click="showPrice = !showPrice"
             >
@@ -160,7 +160,7 @@
             <!--sizes-->
 
             <h2
-              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.colors.active"
               @click="showSizes = !showSizes"
             >
@@ -244,7 +244,7 @@
 
             <!--collections-->
             <h2
-              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.collections.active"
               @click="showCollections = !showCollections"
             >
@@ -366,7 +366,7 @@
 
             <!--tags-->
             <h2
-              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.tags.active"
               @click="showTags = !showTags"
             >
@@ -444,7 +444,7 @@
             <hr v-if="$settings.sections.shop.sidebar.tags.active" class=" mb-5"/>
             <!--brands-->
             <h2
-              class="text-12px font-tenor-sans px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins tracking-0.25rem uppercase px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.brands.active"
               @click="showBrands = !showBrands"
             >
@@ -508,10 +508,15 @@
 
       <div class="w-full md:w-3/4">
       <div class="bg-white">
+          <div class=" flex "> 
+            <sections-shop-collections></sections-shop-collections>
+          </div>
           <div class="border-b">
+
+
             <div class="flex items-center justify-between p-2 h-[55px]">
               <div>
-                <span class="hidden md:flex text-16px font-tenor tt">
+                <span class="hidden md:flex text-14px font-poppins">
                   {{ items.length }} <span class="px-2">products</span>
                 </span>
               </div>
@@ -527,7 +532,7 @@
               </button>
               <div class="w-full flex justify-end">
                 <select
-                  class="p-2 bg-white border text-16px font-tenor-sans tt outline-none py-10px px-20px"
+                  class="p-2 bg-white border  text-14px font-poppins outline-none py-10px px-20px"
                   v-model="params.sort"
                 >
                   <option
@@ -575,12 +580,12 @@
           >
             <h1 class="py-3">{{ $settings.sections.shop.empty_text }}</h1>
           </div>
-          <div class="flex flex-wrap">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 ">
             <div
               v-for="(item, i) in items"
               :key="i"
-              class="p-2 home-products"
-              :class="gridClass"
+              class="p-2 w-full "
+             
             >
               <si-product :item="item"></si-product>
             </div>

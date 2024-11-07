@@ -1,5 +1,5 @@
 <template>
-<div class="h-full flex relative bg-red-400  text-16 font-tenor-sans ">
+<div class="h-full flex relative bg-red-400  text-16px font-tenor-sans ">
     <div class="w-full flex flex-col h-full bg-white  ">
         <div class="w-100 pb-2/3 relative pb-5 ">
             <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
@@ -8,8 +8,8 @@
         </div>
         <div class="text-center h-full py-5">
             <nuxt-link  :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
-                <span class=" text-12px ">{{ formatDate(item.createdAt) }}</span>
-                <h2 class=" text-16px  font-medium text-center text-black">{{ item.title }}</h2>
+                <span class=" text-12px font-tenor-sans ">{{ formatDate(item.createdAt) }}</span>
+                <h2 class=" text-14px  font-medium text-center text-black font-poppins capitalize">{{ item.title }}</h2>
             </nuxt-link>
 
             <!--  <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">

@@ -56,6 +56,13 @@
     "_name": "_b8944310"
   },
   {
+    "name": "contact-slug",
+    "path": "/contact/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\NEW-theme\\\\Bazella-Me\\\\pages\\\\contact\\\\_slug.vue",
+    "chunkName": "pages/contact/_slug",
+    "_name": "_25a3688d"
+  },
+  {
     "name": "pages-slug",
     "path": "/pages/:slug?",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\NEW-theme\\\\Bazella-Me\\\\pages\\\\pages\\\\_slug.vue",

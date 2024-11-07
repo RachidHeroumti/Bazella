@@ -1,6 +1,6 @@
 <template>
-    <div class="flex items-center justify-center w-12 h-12 bg-primary rounded-md">
-        <span class="text-xl font-bold text-white uppercase">{{ letters }}</span>
+    <div class="flex items-center justify-center w-12 h-12 bg-primary rounded-full ">
+        <span class="text-xl font-poppins text-white uppercase">{{ letters }}</span>
     </div>
 </template>
 <script>

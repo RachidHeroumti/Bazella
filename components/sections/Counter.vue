@@ -1,49 +1,56 @@
-<template>  
+<template>
+  <div class="w-full bg-bg_secendary"> 
+    <div class=" container "> 
   <div v-if="$settings.sections.counter.active"  
-       class="bg-bg_secendary gap-6 py-26.6px px-32 flex flex-col md:flex-row">  
-    <div class="w-full py-26.6px px-32">  
-      <h2 class="pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase">  
+       class=" gap-6 py-26.6px  flex flex-col md:flex-row">  
+    <div class="w-full pb-5  md:py-26.6px px-2  flex flex-col     ">  
+      <h2 class=" pb-5px  md:pb-15px font-tenor-sans tracking-0.2em text-[26] md:text-[36px] uppercase w-full   text-center ">  
         {{ Item.title }}  
       </h2>  
-      <p class="pb-15px block tracking-1.7px text-13.6px">  
+      <p class=" md:pb-15px block tracking-1.7px text-13.6px w-full  text-center">  
         {{ Item.offer }}  
       </p>  
     </div>  
-    <div class="w-full flex py-26.6px px-32 uppercase items-center">  
-      <div class="px-16px">  
+    
+    
+    <div class="w-full flex md:py-26.6px md:px-32 uppercase items-center justify-center ">    
+      <div class=" md:px-16px px-2">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center"  
+          class="pb-4px font-tenor-sans tracking-0.2em text-[26] md:text-[36px] uppercase text-center"  
         >  
-          {{ days }}  
+          {{ days }} 
         </h1>  
         <p class="tracking-1.7px text-12px">Days</p>  
-      </div>  
-      <div class="px-16px border-s-black border-s">  
+      </div> 
+      <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center"  
+          class="pb-4px font-tenor-sans tracking-0.2em text-[26] md:text-[36px]l uppercase text-center"  
         >  
           {{ hours }}  
         </h1>  
         <p class="tracking-1.7px text-12px">Hours</p>  
       </div>  
-      <div class="px-16px border-s-black border-s">  
+      <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center"  
+          class="pb-4px font-tenor-sans tracking-0.2em text-[26] md:text-[36px] uppercase text-center"  
         >  
           {{ minutes }}  
         </h1>  
         <p class="tracking-1.7px text-12px">Minutes</p>  
       </div>  
-      <div class="px-16px border-s-black border-s">  
+      <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em text-3xl uppercase text-center"  
+          class="pb-4px font-tenor-sans tracking-0.2em  text-[26] md:text-[36px] uppercase text-center"  
         >  
           {{ seconds }}  
         </h1>  
         <p class="tracking-1.7px text-12px">Seconds</p>  
       </div>  
-    </div>  
-  </div>  
+    </div> 
+
+  </div> 
+</div>  
+  </div>
 </template>  
 
 <script>  

@@ -1,7 +1,8 @@
 <template>
-    <div class="container border">
-        <div class="flex mb-2 relative">
-            <transition name="slideleft" v-if="$settings.sections.blog.sidebar.active">
+    <div class="container ">
+        <div class="flex mb-2 relative md:py-[40px] py-[10px]">
+
+            <!-- <transition name="slideleft" v-if="$settings.sections.blog.sidebar.active">
                 <div :class="showSideBar ? 'show':'hide'" class="w-80 md:w-1/4 fixed hidden md:block md:top-0 h-full top-0 bottom-0 bg-white md:relative z-10">
                     <div class="bg-black bg-opacity-50 fixed block md:hidden inset-0" @click="showSideBar=false"></div>
                     <div class="border-r bg-white h-full flex flex-col relative">
@@ -26,10 +27,11 @@
                         </div>
                     </div>
                 </div>
-            </transition>
-            <div class="w-full md:w-3/4">
+            </transition> -->
+
+            <div class="w-full ">
                 <div class="bg-white">
-                    <div class=" border-b">
+                    <!-- <div class=" border-b">
                         <div class="flex justify-between items-center p-2">
                             <button @click="showSideBar = true" aria-label="Search button" class="flex block md:hidden items-center flex-col p-2 bg-gray-100 rounded-md mx-1 hover:bg-gray-200">
                                 <span class="w-6 my-0.5 h-0.5 bg-gray-800"></span>
@@ -46,13 +48,18 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+
+                    </div> -->
+
                     <div v-if="loading.pages" class="flex justify-center items-center my-5">
                         <si-loader></si-loader>
                     </div>
                     <div v-if="!loading.pages && items.length == 0" class="flex justify-center items-center my-5">
                         <h1 class="py-3">{{ $settings.sections.blog.empty_text }}</h1>
                     </div>
+
+                    <h1 class=" text-36px font-tenor-sans text-black mb-[10px] md:mb-[50px] w-full text-center uppercase tracking-0.25rem"
+                    >Journal</h1>
                     <div class="flex flex-wrap">
                         <div v-for="(item, i) in items" :key="i" class="p-2" :class="gridClass">
                             <si-post :item="item"></si-post>

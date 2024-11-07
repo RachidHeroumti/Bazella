@@ -50,7 +50,8 @@ module.exports = {
         colors: {
           black: '#000000',
           bg_secendary :'#eef0f4',
-           buttons:'#333541'
+           buttons:'#333541',
+           customdark : '#1c1d1d', 
         },
         letterSpacing: {
           '0.2em': '0.2em',

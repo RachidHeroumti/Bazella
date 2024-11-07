@@ -3,6 +3,9 @@
         <div class=" py-75px my-2 bg-white ">
             <div class=" mb-[50px] flex flex-col justify-center items-center "> 
                 <h2 class="mb-2  text-36px  text-black uppercase w-full text-center font-tenor-sans ">{{$settings.sections.cart.title}}</h2>
+                <div v-if="!loading.cart && items.length == 0" class="flex flex-col items-center py-1">
+                <h2 class="w-full py-3 text-center text-black font-poppins  text-12px">{{ $settings.sections.cart.empty_text }}</h2>
+            </div>
                 <nuxt-link to="/shop" class="relative group text-16px text-black justify-center flex">  
   <span class="text-13.6px overflow-hidden whitespace-nowrap overflow-ellipsis font-poppins">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>  
   <span class="absolute left-0 bottom-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>  
@@ -19,7 +22,7 @@
             </div>
             <div class=" md:w-1/3 w-full font-poppins"> 
                 <div v-if="!loading.cart && items.length > 0" class="flex flex-col mb-2 bg-gray-100  p-[5px] sm:p-[10px] md:p-[30px] ">
-                <div class="flex justify-between mb-5 text-16px  ">
+                <div class="flex justify-between mb-5 text-13.6px  ">
                     <h2>{{ $settings.sections.cart.total_text }}</h2>
                     <h2 class="">{{ total }} {{ $store.state.currency.symbol }}</h2>
                 </div>
@@ -36,14 +39,7 @@
           </div>
             
 
-            <div v-if="!loading.cart && items.length == 0" class="flex flex-col items-center py-4">
-                <h2 class="w-full py-3 text-center">{{ $settings.sections.cart.empty_text }}</h2>
-                <nuxt-link to="/shop" class="flex items-center justify-center p-2 text-white bg-primary">
-                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5 h-5 translate"><path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z"></path></svg>
-                <span>&ensp;</span>
-                    <span class="w-full">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
-                </nuxt-link>
-            </div>
+           
         </div>
 
 

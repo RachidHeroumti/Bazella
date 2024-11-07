@@ -1,7 +1,8 @@
 <template>
-  <div class="container">
-    <div class="m-2">
-      <h2 class=" text-black font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase ">{{ title }}</h2>
+  <div class="container my-[40px]">
+    <div class=" mb-[30px] ">
+      <h2 class=" text-black font-medium w-full text-center
+       pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase ">{{ title }}</h2>
       <div class="flex justify-center " v-if="section.show_more_text">
       <nuxt-link class=" border border-gray-100 hover:border-black" :to="section.show_more_url">
         <span class="uppercase font-tenor-sans text-12px font-normal px-15px py-8">{{ section.show_more_text }}</span>
@@ -11,8 +12,8 @@
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>
     </div>
-    <div class="flex flex-wrap">
-      <div v-for="(item, i) in items" :key="i" class="p-2" :class="mobile_size ? mobile_size : 'w-full sm:w-1/2 md:w-1/3 lg:w-1/4 home-products'">
+    <div class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full ">
+      <div v-for="(item, i) in items" :key="i" class="w-full p-2">
         <si-product :item="item"></si-product>
       </div>
     </div>

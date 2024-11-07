@@ -1,5 +1,5 @@
 <template>
-    <div class="container py-10px md:py-75px  w-full ">
+    <div class="container   w-full  ">
       <div v-if="loading" class="flex items-center justify-center">
         <si-loader></si-loader>
       </div>
@@ -7,24 +7,25 @@
       <div class=" w-full">
         <div v-if="items.length > 0">
           <div
-            v-if="$settings.sections.collection_section_3.active"
-            class="flex flex-wrap gap-5"
+            v-if="$settings.sections.shop.items_collection.active"
+            class="flex flex-wrap "
           >
             <h2
-              class="text-black font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase"
+              class="text-black font-medium w-full text-center font-tenor-sans tracking-0.2em text-3xl uppercase"
             >
-              {{ $settings.sections.collection_section_3.title }}
+              {{ $settings.sections.shop.items_collection.title }}
             </h2>
+  
             <div class="overflow-hidden w-full">
               <div
-                class="flex flex-wrap"
+                class=" flex w-full overflow-x-scroll md:overflow-x-hidden  md:grid grid-cols-1 md:grid-cols-3"
               >
                 <div
-                  class="w-full py-5"
+                  class="w-full py-5 flex"
                   v-for="(item, i) in items"
                   :key="i"
                 >
-                  <si-collection type="last-collections" :item="item" />
+                  <si-collection type="simple" :item="item" />
             </div>
             </div>
             </div>
@@ -103,6 +104,7 @@
           >
         </div>
       </div>
+      
     </div>
   </template>
   <script>
@@ -111,7 +113,7 @@
       return {
         loading: true,
         items: [],
-        mobile_size: this.$settings.sections.collection_section_3.mobile_size,
+        mobile_size: this.$settings.sections.shop.items_collection.mobile_size,
       };
     },
     async fetch() {
@@ -119,8 +121,9 @@
         const filter = {};
       
 
-        if (this.$settings.sections.collection_section_3.items.length > 0) {
-          this.items = this.$settings.sections.collection_section_3.items;
+        if (this.$settings.sections.shop.items_collection.collection.length > 0) {
+          this.items = this.$settings.sections.shop.items_collection.collection;
+          
         } else {
           const { data } = await this.$storeino.collections.search(filter);
           this.items = data.results;

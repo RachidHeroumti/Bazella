@@ -1,25 +1,24 @@
 <template>
     <div>
         <meta itemprop="priceCurrency" :content="$store.state.currency.code" />
-        <div class="price flex justify-center my-2 space-x-2 me-2 text-black font-tenor-sans text-13.6px " v-if="type=='simple'">
-            <span class="">{{ price.salePrice }}{{ $store.state.currency.symbol }}</span>
+        <div class="price flex justify-center my-2 space-x-2 me-2 text-black font-tenor-sans text-16px " v-if="type=='simple'">
+            <span class=" ">{{ price.salePrice }}{{ $store.state.currency.symbol }}</span>
             <span class="flex "></span>
             <span class="relative" v-if="price.comparePrice > 0">
                 <b class=""><del>{{ price.comparePrice }}{{ $store.state.currency.symbol }}</del>
                     </b>
-                
             </span>
             <meta itemprop="price" :content="price.salePrice" />
         </div>
-        <div class="price flex justify-center my-2 px-2  text-13.6px " v-else-if="minPrice != maxPrice">
+        <div class="price flex justify-center my-2 px-2  text-16px " v-else-if="minPrice != maxPrice">
             <meta itemprop="price" :content="minPrice" />
-            <b class=" ">{{ minPrice }}{{ $store.state.currency.symbol }}</b>
+            <span class=" ">{{ minPrice }}{{ $store.state.currency.symbol }}</span>
             <span class="flex">~</span>
             <b class=" ">{{ maxPrice }}{{ $store.state.currency.symbol }}</b>
         </div>
-        <div class="price flex justify-center my-2 px-2 text-13.6px " v-else-if="variants.length > 0">
+        <div class="price flex justify-center my-2 px-2 text-16px " v-else-if="variants.length > 0">
             <meta itemprop="price" :content="variants[0].price.salePrice" />
-            <b class=" ">{{ variants[0].price.salePrice }}{{ $store.state.currency.symbol }}</b>
+            <span class=" ">{{ variants[0].price.salePrice }}{{ $store.state.currency.symbol }}</span>
             <span class="flex w-2"></span>
             <span class="relative" v-if="variants[0].price.comparePrice > 0">
                 <b class="">

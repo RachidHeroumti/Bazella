@@ -8,12 +8,12 @@
       <div class="w-full md:w-1/2 ">
         <div class="relative flex flex-col md:flex-row ">
           
-          <div class="w-[120px] overflow-auto flex   md:flex-col px-2 ">
+          <div class=" w-full md:w-[120px]  overflow-auto flex   md:flex-col px-2 ">
             <div class="flex md:flex-col  ">
               <si-image
                 width="76"
                 height="105"
-                class="w-[76px] h-[105px]  bg-white mb-1  cursor-pointer"
+                class="md:w-[76px] md:h-[105px]  bg-white m-1 object-cover  cursor-pointer  w-full h-[350px] "
                 v-for="(image, index) in item.images"
                 @click="setImage(index)"
                 :key="index"
@@ -25,7 +25,7 @@
           <si-image
             width="500"
             height="500"
-            class="bg-white cursor-pointer  w-[500]"
+            class="bg-white cursor-pointer  w-[500] hidden md:flex"
             @click="$store.state.fullImage = image ? image.src : null"
             :src="image ? image.src : null"
             :alt="item.name"
@@ -33,10 +33,10 @@
         </div>
       </div>
 
-      <div class="w-full ps-[45px] md:w-1/2 font-tenor-sans text-black">
+      <div class="w-full p-1 md:ps-[45px] md:w-1/2 font-tenor-sans text-black ">
         <div class="p-2">
-          <div class="p-2 bg-white">
-            <h1 class="mb-4 text-black text-30.6px font-tenor-sans uppercase">
+          <div class="p-2 flex flex-col justify-center md:justify-normal items-center  md:block">
+            <h1 class="mb-4 text-black text-[22px] md:text-30.6px font-tenor-sans uppercase   ">
               {{ item.name }}
             </h1>
             <meta itemprop="name" :content="item.name" />
@@ -85,7 +85,9 @@
               :variants="[]"
             ></si-product-price>
 
-            <h1 class=" py-3"></h1>
+            <hr>
+            <hr>
+            <hr>
             <si-product-variants
               class="flex"
               v-if="item.type == 'variable'"
@@ -104,11 +106,11 @@
             >
               <b>{{ "Out of stock" }}</b>
             </div>
-            <div v-else class="flex flex-col mb-[25px] space-y-2 font-semibold text-13.6px ">
+            <div v-else class="flex flex-col mb-[25px] space-y-2 font-semibold text-13.6px w-full ">
               <button
                 v-if="$settings.sections.product.add_to_cart.active"
                 @click="addToCart"
-                class="flex justify-center w-full px-20px min-h-[50px] py-[13px] text-black bg-white border border-black border-spacing-2 click-effect"
+                class="flex justify-center w-full px-20px min-h-[50px] py-[13px] text-black bg-white border border-black border-spacing-2 click-effect "
               >
                 <span class="w-full">{{
                   $settings.sections.product.add_to_cart.text
@@ -130,7 +132,7 @@
                 }}</span>
               </button>
             </div>
-            <p class=" mb-5 italic text-14px font-semibold ">{{ item.description }}</p> 
+            <p class=" mb-5 italic text-12x font-poppins text-gray-800">{{ item.description }}</p> 
             <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
             <si-app-loader placement="AFTER_ADD_TO_CART" />
 
@@ -175,6 +177,7 @@
           </div>
         </div>
       </div>
+
     </div>
     <div v-if="showVarianteModal" class="d-f modal_variante">
       <div class="p-2 modal_variante_content">
@@ -302,13 +305,16 @@
       >
         <sections-upsell :item="item.upsell" />
       </div>
+      <si-app-loader placement="BEFORE_DESCRIPTION" />
       <div
         v-if="item"
         class="p-2 mx-2 my-3 bg-white rounded-md description"
         id="description"
         v-html="item.html"
       ></div>
+      
       <si-app-loader placement="AFTER_DESCRIPTION" />
+      <sections-product-post></sections-product-post>
       <div
         v-if="item && $settings.sections.product.reviews.active"
         class="reviews"
@@ -323,6 +329,7 @@
         ></sections-reviews>
       </div>
       <si-app-loader placement="REPLACE_REVIEWS" />
+      
       <div
         v-if="item && $settings.sections.product.related.active"
         class="related"

@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-75px w-full">
+  <div class="container py-10px md:py-75px w-full">
     <div v-if="loading" class="flex items-center justify-center">
       <si-loader></si-loader>
     </div>
@@ -16,26 +16,19 @@
             {{ $settings.sections.collection_section_2.title }}
           </h2>
 
-          <div class="overflow-hidden px-5 py-3 md:px-8 md:py-4 w-full ">
-            <carousel
-              class="flex "
-              :perPageCustom="[
-                [768, 2],
-                [1024, 2],
-              ]"
-              :navigationEnabled="true"
-              :paginationEnabled="false"
-              :scrollPerPage="true"
-              :rtl="$store.state.language.code == 'AR' ? true : false"
+          <div class="overflow-hidden px-5 py-3  md:py-4 w-full ">
+            <div
+              class=" grid grid-cols-1   md:grid-cols-2 gap-5 w-full "
+              
             >
-              <slide
-                class="w-1/2 p-10px "
+              <div
+                class=" w-full p-10px "
                 v-for="(item, i) in items"
                 :key="i"
               >
                 <si-collection type="two-collections" :item="item" />
-              </slide>
-            </carousel>
+          </div>
+        </div>
           </div>
         </div>
 

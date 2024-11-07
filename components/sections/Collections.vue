@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-75px">
+  <div class="container md:py-75px py-10px">
     <div v-if="loading" class="flex items-center justify-center">
       <si-loader></si-loader>
     </div>
@@ -18,18 +18,13 @@
           </h2>
 
         
-           <div class="overflow-hidden   px-5 py-3 md:px-8 md:py-4" 
+           <div class="overflow-hidden   px-5 py-3 md:px-8 md:py-4 grid grid-cols-2 md:grid-cols-4 w-full gap-2" 
            >
-            <carousel class="flex " 
-            :perPageCustom="[[768, 2], [1024, 4]]" 
-            :navigationEnabled="true"
-            :paginationEnabled="false"
-            :rtl="$store.state.language.code == 'AR' ? true : false">
-                <slide class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 border-r border-gray" 
+                <div class="w-full" 
                 v-for="(item,i) in items" :key="i" > 
                   <si-collection :item="item" />
-                </slide>
-            </carousel> 
+            </div>
+
         </div>
 
 

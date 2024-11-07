@@ -1,7 +1,8 @@
 <template>
     <div class="options">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class=" mb-1  bg-white">
-            <span class="flex mb-1  option-name uppercase ">{{ option.name }}</span>
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class=" mb-5px  bg-white">
+            <h1 class="flex mb-1 font-poppins text-14px tracking-0.25rem  justify-center md:justify-normal
+             option-name uppercase w-full text-center md:w-auto  py-5px ">{{ option.name }}</h1>
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="mx-1 option">
                     <button :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>

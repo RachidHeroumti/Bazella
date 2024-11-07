@@ -1,12 +1,12 @@
 <template>
-<div class="relative flex flex-col  w-[218px] h-[327px] md:h-[421px] md:w-[281px] ">
+<div class="relative flex flex-col  w-full h-[327px] md:h-[421px]  ">
     
 
     <div v-if="discount" class="absolute top-0 left-0 z-10 flex items-center justify-center h-10 p-2 text-white bg-red-700 rounded-br-lg">
         <b>-{{discount.value}} {{ discount.type == 'percentage' ? '%' : this.$store.state.currency.symbol }}</b>
     </div>
 
-    <div class="relative flex h-full overflow-hidden">
+    <div class="relative flex h-full overflow-hidden w-full">
         <div class="flex flex-col w-full h-full text-black font-tenor-sans  ">
             <div class="relative  pb-full h-full   ">
                 <nuxt-link :to="`/products/${item.slug}`" :title="item.name" :aria-label="item.name">
@@ -15,7 +15,7 @@
             </div>
             <div class=" p-2 text-center  ">
                 <nuxt-link :to="`/products/${item.slug}`">
-                    <span class=" text-center text-16 uppercase ">{{ item.name }}</span>
+                    <span class=" text-center md:text-[20px] uppercase text-14px ">{{ item.name }}</span>
                 </nuxt-link>
             </div>  
             <si-product-price :type="item.type" :price="item.price" :variants="item.variants"></si-product-price>

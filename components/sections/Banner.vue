@@ -2,16 +2,16 @@
   <div class="bg-white text-black">
     <div>
       <div v-if="banner.items" class="relative w-full">
-        <div class="relative w-full overflow-hidden">
+        <div class="relative w-full overflow-hidden ">
           <!-- Main Image Container -->
           <div
-            class="flex transition-transform duration-500 ease-in-out"
+            class="flex transition-transform duration-1000 ease-in-out"
             :style="{ transform: `translateX(-${activeIndex * 100}%)` }"
           >
             <div
               v-for="(item, i) in banner.items"
               :key="i"
-              class="w-full flex-shrink-0 relative"
+              class="w-full flex-shrink-0 relative "
             >
               <nuxt-img
                 width="100%"
@@ -21,11 +21,15 @@
                 :alt="item.title"
                 style="z-index: 10;" 
               />
+              <div class=" bg-black text-white  absolute top-0 left-0 right-0 h-[40px] flex justify-center items-center "> 
+                <h1 class=" w-full text-center text-13.6px font-poppins "
+                >{{item.shipping.text }}</h1>
+              </div>
               <div
                 class="z-50 absolute left-0 top-0 w-full h-full flex flex-col items-center text-white"
                 :class="i === '_1' ? 'justify-end' : 'justify-center'"
               >
-               <h1 class=" uppercase font-tenor-sans text-[63px] tracking-0.25rem">{{ item.title }}</h1>
+               <h1 class=" uppercase font-tenor-sans text-[36px] md:text-[63px] tracking-0.25rem">{{ item.title }}</h1>
                <p class=" my-[5px]">{{ item.description }}</p>
                 <button class=" bg-black text-13.6px  text-white  uppercase px-[20px] py-[11px]" >
                   <nuxt-link 
@@ -92,12 +96,14 @@ export default {
     startAutoplay() {
       this.autoplayInterval = setInterval(() => {
         const totalSlides = this.banner.items.length;
+         //console.log("items ",this.$settings.sections.banner.items);
+        
         if (this.activeIndex < 0 || this.activeIndex >= 3 - 1) {
           this.toNextSlide = !this.toNextSlide;
         }
 
         this.activeIndex += this.toNextSlide ? 1 : -1;
-      }, 2000);
+      }, 5000);
     },
     stopAutoplay() {
       if (this.autoplayInterval) {

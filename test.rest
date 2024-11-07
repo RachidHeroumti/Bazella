@@ -2262,12 +2262,28 @@ X-Auth-Token: {{token}}
                                 "name": "shop_collections",
                                 "values": [
                                     {
-                                        "name": "new value",
+                                        "name": "collections",
                                         "note": "",
-                                        "path": "sections.shop.collections",
+                                        "path": "sections.shop.items_collection",
                                         "type": "tc_collection",
                                         "translatable": false,
                                         "value": []
+                                    },
+                                    {
+                                        "name": "show_collections",
+                                        "note": "",
+                                        "path": "sections.shop.items_collection.active",
+                                        "type": "tc_checkbox",
+                                        "translatable": false,
+                                        "value": true
+                                    },
+                                    {
+                                        "name": "title",
+                                        "note": "",
+                                        "path": "sections.shop.items_collection.title",
+                                        "type": "tc_input",
+                                        "translatable": false,
+                                        "value": "Shop collections"
                                     }
                                 ]
                             }
@@ -3628,7 +3644,7 @@ X-Auth-Token: {{token}}
                     "prev_text": "Prev"
                 },
                 "empty_text": "No products found",
-                "collections": []
+                "items_collection": []
             },
             "blog": {
                 "sidebar": {
