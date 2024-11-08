@@ -1,7 +1,7 @@
 <template>
-  <div class="container my-[75px]" v-if="items.length > 0">
-    <div class="m-2">
-      <header class=" text-black font-tenor-sans text-20px uppercase text-center w-full mb-5px">{{ $settings.sections.product.title }} You may also like</header>
+  <div class="container my-10px md:my-[75px]" v-if="items.length > 0">
+    <div class=" md:mb-10px mb-[36px]">
+      <h1 class=" bg-re-500 text-black font-tenor-sans text-20px  md:text-[30px] uppercase text-center w-full ">{{ $settings.sections.product.related.title }}</h1>
     </div>
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>
@@ -40,6 +40,7 @@ export default {
               "_id-ne": this.item._id,
               "collections._id-in": ids
             })
+            if(data.results)
           this.items = data.results
       }catch(e){
         console.log({e});

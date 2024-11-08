@@ -149,6 +149,7 @@ export default {
             this.loading.products = true;
             try{
                 const { data } = await this.$storeino.products.search({limit: 5});
+                if(data.results)
                 this.products = data.results;
             }catch(e){
                 console.log({e});
@@ -160,6 +161,7 @@ export default {
             this.loading.categories = true;
             try{
                 const { data } = await this.$storeino.categories.search({});
+                if(data.results)
                 this.categories = data.results;
             }catch(e){
                 console.log({e});
@@ -172,6 +174,7 @@ export default {
             try{
                 this.lastParams = this.$tools.copy(this.params);
                 const { data } = await this.$storeino.pages.search(this.params);
+                if(data.results)
                 this.items = data.results
             }catch(e){
                 console.log({e});

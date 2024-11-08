@@ -11,7 +11,7 @@
           class="flex flex-wrap gap-5"
         >
           <h2
-            class="text-black font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase"
+            class="text-black font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em text-[20px] md:text-3xl uppercase"
           >
             {{ $settings.sections.collection_section_2.title }}
           </h2>
@@ -124,6 +124,7 @@ export default {
         this.items = this.$settings.sections.collection_section_2.items;
       } else {
         const { data } = await this.$storeino.collections.search(filter);
+        if(data.results)
         this.items = data.results;
       }
     } catch (e) {

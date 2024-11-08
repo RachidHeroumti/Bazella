@@ -21,7 +21,7 @@
     </nuxt-link>
 
     <!-- Overlay with Item Name -->
-    <div class="absolute left-0 w-full flex items-center justify-center z-50">
+    <div class="absolute left-0 w-full flex items-center justify-center z-30">
       <nuxt-link class="flex justify-center w-full" :to="computedLink">
         <span
           class="p-1 m-auto flex justify-center items-center px-3 leading-4 text-center text-black font-normal bg-white text-14px font-poppins tracking-0.25rem uppercase 
@@ -56,7 +56,7 @@
     </nuxt-link>
 
     <!-- Overlay with Item Name -->
-    <div class="absolute left-0 w-full flex  items-center justify-center z-50 md:gap-10px gap-5px">
+    <div class="absolute left-0 w-full flex  items-center justify-center z-30 md:gap-10px gap-5px">
       <nuxt-link class="flex" to="/shop">
         <span
         style="background-color: #585065;"
@@ -102,7 +102,7 @@
     </nuxt-link>
 
     <!-- Overlay with Item Name -->
-    <div class="absolute bottom-5 right-5  w-full flex flex-col items-center justify-end z-50  gap-10px">
+    <div class="absolute bottom-5 right-5  w-full flex flex-col items-center justify-end z-30  gap-10px">
 
       <div class="text-white bg-red-500 ">
         <h1 class=" text-16px md:text-25px mb-4 font-tenor-sans uppercase">

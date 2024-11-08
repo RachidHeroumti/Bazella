@@ -19,7 +19,7 @@
                                 <b class="bg-red-700 text-white inline-block p-1 rounded-lg">-{{ item.upsell.value }} {{ item.upsell.type == 'percentage' ? '%' : $store.state.currency.symbol }}</b>
                             </div>
 
-                            <span class="  mt-10px  cursor-pointer text-13.6px " @click="remove">Remove</span>
+                            <span class="  mt-10px  cursor-pointer text-13.6px " @click="remove">{{ $settings.sections.cart.remove_text }}</span>
                             </div>
                           
                             

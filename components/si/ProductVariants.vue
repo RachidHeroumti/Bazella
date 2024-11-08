@@ -1,6 +1,6 @@
 <template>
-    <div class="options">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class=" mb-5px  bg-white">
+    <div class="options  md:w-full w-auto">
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class=" mb-5px    ">
             <h1 class="flex mb-1 font-poppins text-14px tracking-0.25rem  justify-center md:justify-normal
              option-name uppercase w-full text-center md:w-auto  py-5px ">{{ option.name }}</h1>
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
@@ -280,7 +280,7 @@ export default {
     background: #fff;
     padding: 5px 10px;
     cursor: pointer;
-    width: 36px;
+    width: 43px;
     height: 36px;
 }
 
@@ -299,7 +299,7 @@ export default {
 
 .options .option button.size-style {
     background: #fff;
-    width: 36px;
+    width: 45px;
     height: 36px;
     cursor: pointer;
     

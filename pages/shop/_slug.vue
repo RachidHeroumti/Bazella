@@ -4,13 +4,13 @@
       <transition name="slideleft">
         <div
           :class="showSideBar ? 'show' : 'hide'"
-          class="fixed top-0 bottom-0 z-20 hidden h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative"
+          class="fixed top-0 bottom-0 z-40  hidden h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative "
         >
           <div
             class="fixed inset-0 block bg-black bg-opacity-50 md:hidden"
             @click="showSideBar = false"
           ></div>
-          <div class="relative flex flex-col h-full bg-white me-5 pt-[35px]">
+          <div class="relative flex flex-col h-full bg-white me-5 pt-[35px] overflow-y-scroll  md:overflow-y-hidden">
             <div class="flex justify-end w-full md:hidden">
               <button
                 @click="showSideBar = false"
@@ -517,7 +517,7 @@
             <div class="flex items-center justify-between p-2 h-[55px]">
               <div>
                 <span class="hidden md:flex text-14px font-poppins">
-                  {{ items.length }} <span class="px-2">products</span>
+                  {{ items.length }} <span class="px-2">{{ $settings.sections.shop.product_text }}</span>
                 </span>
               </div>
               <button
@@ -925,6 +925,7 @@ export default {
       this.loading.collections = true;
       try {
         const { data } = await this.$storeino.collections.search({});
+        if(data.results)
         this.collections = data.results;
       } catch (e) {
         console.log({ e });
@@ -936,6 +937,7 @@ export default {
       this.loading.brands = true;
       try {
         const { data } = await this.$storeino.brands.search({});
+        if(data.results)
         this.brands = data.results;
       } catch (e) {
         console.log({ e });
@@ -953,8 +955,9 @@ export default {
         this.params.limit = this.$settings.sections.shop.pagination.limit;
         this.lastParams = this.$tools.copy(this.params);
         const { data } = await this.$storeino.products.search(this.params);
+        if(data.results){
         this.items = data.results;
-        this.paginate = data.paginate;
+        this.paginate = data.paginate;}
       } catch (e) {
         console.log({ e });
       }

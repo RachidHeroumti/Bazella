@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="m-2">
-      <h2 class="text-black  font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em text-3xl uppercase">{{ $settings.sections.posts.title  }}</h2>
+      <h2 class="text-black  font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em md:text-3xl text-[20px] uppercase">{{ $settings.sections.posts.title  }}</h2>
       <div class="flex justify-center" v-if="$settings.sections.posts.show_more_text">
       <nuxt-link class=" border border-gray-100 hover:border-black" to="/blog">
         <span class=" uppercase font-tenor-sans text-12px font-normal px-15px py-8">{{ $settings.sections.posts.show_more_text }}</span>
@@ -43,6 +43,7 @@ export default {
             this.items = this.$settings.sections.posts.items;
           }else{
             const { data } = await this.$storeino.pages.search( { type: 'POST' } )
+            if(data.results)
             this.items = data.results
           }
         }catch(e){

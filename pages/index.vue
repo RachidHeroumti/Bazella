@@ -8,7 +8,7 @@
    
     <sections-upsell-offers ></sections-upsell-offers>
   
-    <template v-for="i in 5">
+    <template v-for="i in 3">
       <sections-products :key="i" :data-key="i" v-if="$settings.sections[`products_${i}`].active" :section="$settings.sections[`products_${i}`]"></sections-products>
     </template>
     <sections-one-post></sections-one-post>

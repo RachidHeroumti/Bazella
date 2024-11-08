@@ -13,7 +13,7 @@
               <si-image
                 width="76"
                 height="105"
-                class="md:w-[76px] md:h-[105px]  bg-white m-1 object-cover  cursor-pointer  w-full h-[350px] "
+                class="md:w-[76px] md:h-[105px]  bg-white m-1 md:object-cover object-contain  cursor-pointer  w-full h-[350px] "
                 v-for="(image, index) in item.images"
                 @click="setImage(index)"
                 :key="index"
@@ -24,8 +24,8 @@
           </div>
           <si-image
             width="500"
-            height="500"
-            class="bg-white cursor-pointer  w-[500] hidden md:flex"
+            
+            class="bg-white cursor-pointer  w-[500px] h-full hidden md:flex "
             @click="$store.state.fullImage = image ? image.src : null"
             :src="image ? image.src : null"
             :alt="item.name"
@@ -35,7 +35,7 @@
 
       <div class="w-full p-1 md:ps-[45px] md:w-1/2 font-tenor-sans text-black ">
         <div class="p-2">
-          <div class="p-2 flex flex-col justify-center md:justify-normal items-center  md:block">
+          <div class="p-2 flex flex-col justify-center md:justify-normal items-center  md:block ">
             <h1 class="mb-4 text-black text-[22px] md:text-30.6px font-tenor-sans uppercase   ">
               {{ item.name }}
             </h1>
@@ -132,10 +132,41 @@
                 }}</span>
               </button>
             </div>
-            <p class=" mb-5 italic text-12x font-poppins text-gray-800">{{ item.description }}</p> 
-            <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
             <si-app-loader placement="AFTER_ADD_TO_CART" />
+            
+            <p class=" mb-5  text-12x font-poppins text-gray-800">{{ item.description }}</p> 
+            <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
+            <div class=" border mt-10px border-gray-500  w-full p-15px transition-opacity duration-1000 ease-in  " >
+              <h1 class=" text-12px font-poppins text-center uppercase tracking-0.25rem w-full font-light  flex"
+              @click="showshippinginfo=!showshippinginfo"
+              >
+                <span class=" w-full text-center " >{{ $settings.sections.product.shipping_info.text}}</span>
+                <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: showshippinginfo ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
+              </h1>
 
+              <p class="text-12px transition-opacity duration-1000 ease-in "   
+       v-show="showshippinginfo"   
+       :class="{ 'opacity-100': showshippinginfo, 'opacity-0': !showshippinginfo }">  
+      {{ $settings.sections.product.shipping_info.description }}  
+    </p>
+
+            </div>
+            
           </div>
           <div
             class="my-2 bg-white"
@@ -347,6 +378,7 @@ export default {
       loading: true,
       item: null,
       image: null,
+      showshippinginfo:false,
       tab: "description",
       outofstock: false,
       quantity: {},

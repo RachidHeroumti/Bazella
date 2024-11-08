@@ -1,7 +1,7 @@
 <template>  
     <div v-if="item && item.review.reviews.length > 0" class="container p-10px md:py-[75px]  bg-gray-100">  
       <div class=" mb-15px">  
-        <h2 class=" text-[30px] font-tenor-sans uppercase w-full text-center ">{{ $settings.sections.product.reviews.title }}</h2>  
+        <h2 class=" text-[20px] md:text-[30px] font-tenor-sans uppercase w-full text-center ">{{ $settings.sections.product.reviews.title }}</h2>  
       </div>  
       <div v-if="loading" class="flex justify-center items-center my-5">  
         <si-loader></si-loader>  

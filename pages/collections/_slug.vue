@@ -34,9 +34,12 @@ export default {
         this.loading = true;
         try{
             const { data } = await this.$storeino.collections.get({ slug: this.$route.params.slug});
+            if(data){
             this.item = data;
             const { data : { results } } = await this.$storeino.collections.search({ parent: data._id });
             this.items = results;
+           }
+           
         }catch(e){
             console.log({e});
         }

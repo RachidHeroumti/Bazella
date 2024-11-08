@@ -10,11 +10,11 @@
             v-if="$settings.sections.shop.items_collection.active"
             class="flex flex-wrap "
           >
-            <h2
+            <!-- <h2
               class="text-black font-medium w-full text-center font-tenor-sans tracking-0.2em text-3xl uppercase"
             >
               {{ $settings.sections.shop.items_collection.title }}
-            </h2>
+            </h2> -->
   
             <div class="overflow-hidden w-full">
               <div

@@ -2,9 +2,9 @@
   <div class="w-full bg-bg_secendary"> 
     <div class=" container "> 
   <div v-if="$settings.sections.counter.active"  
-       class=" gap-6 py-26.6px  flex flex-col md:flex-row">  
-    <div class="w-full pb-5  md:py-26.6px px-2  flex flex-col     ">  
-      <h2 class=" pb-5px  md:pb-15px font-tenor-sans tracking-0.2em text-[26] md:text-[36px] uppercase w-full   text-center ">  
+       class=" gap-2 md:gap-6 py-5px md:py-26.6px  flex flex-col md:flex-row "> 
+    <div class="w-full pb-5  md:py-26.6px p-2  flex flex-col ">  
+      <h2 class=" pb-5px  md:pb-15px font-tenor-sans tracking-0.2em text-[20px] md:text-[36px] uppercase w-full   text-center ">  
         {{ Item.title }}  
       </h2>  
       <p class=" md:pb-15px block tracking-1.7px text-13.6px w-full  text-center">  
@@ -16,7 +16,7 @@
     <div class="w-full flex md:py-26.6px md:px-32 uppercase items-center justify-center ">    
       <div class=" md:px-16px px-2">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em text-[26] md:text-[36px] uppercase text-center"  
+          class="pb-4px font-tenor-sans font-semibold md:font-normal tracking-0.2em text-[20px] md:text-[36px] uppercase text-center"  
         >  
           {{ days }} 
         </h1>  
@@ -24,7 +24,7 @@
       </div> 
       <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em text-[26] md:text-[36px]l uppercase text-center"  
+          class="pb-4px font-tenor-sans font-semibold md:font-normal tracking-0.2em text-[20px] md:text-[36px] uppercase text-center"  
         >  
           {{ hours }}  
         </h1>  
@@ -32,7 +32,7 @@
       </div>  
       <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em text-[26] md:text-[36px] uppercase text-center"  
+          class="pb-4px font-tenor-sans font-semibold md:font-normal tracking-0.2em text-[20px] md:text-[36px] uppercase text-center"  
         >  
           {{ minutes }}  
         </h1>  
@@ -40,7 +40,7 @@
       </div>  
       <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
-          class="pb-4px font-tenor-sans tracking-0.2em  text-[26] md:text-[36px] uppercase text-center"  
+          class="pb-4px font-tenor-sans font-semibold md:font-normal tracking-0.2em  text-[20px] md:text-[36px] uppercase text-center"  
         >  
           {{ seconds }}  
         </h1>  

@@ -1,11 +1,11 @@
 <template>
   <div class=" ">
     <si-app-loader placement="BEFORE_HEADER" />
-    <div class="relative text-primary px-40px bg-white shadow-sm ">
+    <div class="relative text-gray-900 px-10px md:px-40px bg-white shadow-sm">
       <div
-        class="border-b border-gray-200  flex-col md:flex-row justify-between text-12px text-black font-poppins hidden md:flex"
+        class="border-b border-gray-200 flex-col md:flex-row justify-between text-12px text-black font-poppins hidden md:flex"
       >
-        <div class="flex items-center h-full ">
+        <div class="flex items-center h-full">
           <a href="/about" class="px-10px py-5px block">About</a>
           <a href="/contact" class="px-10 py-5px block">Contact</a>
           <a href="/faq" class="px-10px py-5px block">FAQ</a>
@@ -40,31 +40,41 @@
 
       <div class="flex items-center justify-between py-20px">
         <div class="flex items-center justify-start h-full">
-          <!-- <button @click="$store.state.showHeaderMenu = !$store.state.showHeaderMenu" aria-label="Search button" class="flex flex-col p-2 bg-gray-100 rounded-md hover:bg-gray-200">
-                    <si-svg><svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5 translate"><g class="fa-group"><path fill="currentColor" d="M16 288h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16z" class="fa-secondary"></path><path fill="currentColor" d="M432 384H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H16A16 16 0 0 0 0 80v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16z"></path></g></svg></si-svg>
-                </button>
-                <div v-if="$settings.sections.header.icons.currency && $settings.store_currencies.length > 1" class="relative mx-1">
-                    <div v-if="iconMenu == 'currency'" class="absolute z-50 flex flex-col bg-gray-100 rounded-md top-5">
-                        <a class="p-2 m-1 bg-white whitespace-nowrap" v-for="cur of $settings.store_currencies" :key="cur.code" :href="`?cur=${cur.code}`">{{ cur.name }} ( {{ cur.code }} )</a>
-                    </div>
-                </div>
-                <button @click="iconMenu = iconMenu == 'currency' ? null : 'currency'" v-if="$settings.sections.header.icons.currency && $settings.store_currencies.length > 1" title="Currency" class="item hidden md:block p-1.5 bg-gray-100 rounded-md hover:bg-gray-200">
-                    <span class="text-sm">{{ $store.state.currency.code }}</span>
-                </button>
-                <div v-if="$settings.sections.header.icons.language && $settings.store_languages.length > 1" class="relative mx-1">
-                    <div v-if="iconMenu == 'language'" class="absolute z-50 flex flex-col bg-gray-100 rounded-md top-5">
-                        <a class="p-2 m-1 bg-white whitespace-nowrap" v-for="lang of $settings.store_languages" :key="lang.code" :href="`?lang=${lang.code}`">{{ lang.name }} ( {{ lang.code }} )</a>
-                    </div>
-                </div>
-                <button @click="iconMenu = iconMenu == 'language' ? null : 'language'" v-if="$settings.sections.header.icons.language && $settings.store_languages.length > 1" title="Language" class="item hidden md:block p-1.5 bg-gray-100 rounded-md hover:bg-gray-200">
-                    <span class="text-sm">{{ $store.state.language.code }}</span>
-                </button> -->
+          <button
+            @click="$store.state.showHeaderMenu = !$store.state.showHeaderMenu"
+            aria-label="Search button"
+            class="p-2 rounded-md md:invisible visible"
+          >
+            <si-svg
+              ><svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fad"
+                data-icon="bars"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="w-5 h-5 translate"
+              >
+                <g class="fa-group">
+                  <path
+                    fill="currentColor"
+                    d="M16 288h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16z"
+                    class="fa-secondary"
+                  ></path>
+                  <path
+                    fill="currentColor"
+                    d="M432 384H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H16A16 16 0 0 0 0 80v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16z"
+                  ></path>
+                </g></svg>
+              </si-svg>
+          </button>
 
           <button
             v-if="$settings.sections.header.icons.search"
             @click="showSearch = true"
             aria-label="Search button"
-            class="relative p-2 mx-1 item"
+            class="relative p-2 mx-1"
           >
             <si-svg
               ><svg
@@ -80,18 +90,12 @@
                 <path
                   fill="currentColor"
                   d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
-                  class=""
-                ></path></svg></si-svg>
-            <small
-              v-if="$route.query.search"
-              class="absolute flex items-center justify-center w-1 h-1 p-1 text-white bg-green-700 rounded-full -top-1 -right-1"
-            ></small>
+                  class=""></path></svg>
+                </si-svg>
           </button>
         </div>
 
-        <div
-          class="flex items-center justify-center  text-13.6px tracking-0.2em "
-        >
+        <div class="flex items-center justify-center text-14px tracking-0.2em">
           <div v-if="section.left_menu" class="hidden md:flex">
             <div
               v-if="section.left_menu && section.left_menu.items"
@@ -103,7 +107,7 @@
                 class="flex flex-col menuTextStyle cursor-pointer"
               >
                 <li
-                  class="relative flex justify-between w-full  overflow-visible"
+                  class="relative flex justify-between w-full overflow-visible"
                   @mouseenter="hoveredItem = i"
                   @mouseleave="hoveredItem = null"
                   @focus="hoveredItem = i"
@@ -112,23 +116,25 @@
                   <!-- Parent Item Text -->
                   <div class="p-4 w-full flex" @focus="hoveredItem = i">
                     <router-link
-                      class=" uppercase flex justify-center items-center group relative"
+                      class="uppercase flex justify-center items-center group relative"
                       :class="i == 0 ? '' : ''"
                       :to="item.url"
-                      ><span class="py-1 px-0 ">{{ item.text }}</span>
-                      <span class="absolute left-0 bottom-0 w-3/4 h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>  
+                      ><span class="py-1 px-0">{{ item.text }}</span>
+                      <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
+                      ></span>
 
                       <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="25px"
-                viewBox="0 -960 960 960"
-                width="25px"
-                fill="#1c1c1c"
-              >
-                <path
-                  d="M480-353 240-593l46.67-46.67 193.33 193 193.33-193L720-593 480-353Z"
-                />
-              </svg>
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="25px"
+                        viewBox="0 -960 960 960"
+                        width="25px"
+                        fill="#1c1c1c"
+                      >
+                        <path
+                          d="M480-353 240-593l46.67-46.67 193.33 193 193.33-193L720-593 480-353Z"
+                        />
+                      </svg>
                     </router-link>
                   </div>
 
@@ -139,7 +145,7 @@
                       'submenu',
                       { 'submenu-visible': hoveredItem === i },
                     ]"
-                    class="p-4 py-2 sm:py-5 z-30 w-40 bg-white shadow-sm"
+                    class="p-4 py-2 sm:py-5 z-30 w-80 bg-gray-100 shadow-sm"
                     @mouseenter="hoveredItem = i"
                     @mouseleave="hoveredItem = null"
                   >
@@ -152,7 +158,7 @@
                       @mouseover="hoveredChild = ii"
                     >
                       <nuxt-link
-                        class="flex whitespace-nowrap font-base justify-between items-center text-12p"
+                        class="flex whitespace-nowrap font-poppins justify-between items-center text-12p"
                         :to="child.url"
                       >
                         <span> {{ child.text }}</span>
@@ -195,7 +201,7 @@
                           class="py-1 hover:underline"
                         >
                           <nuxt-link
-                            class="flex whitespace-nowrap font-base text-12p"
+                            class="flex whitespace-nowrap font-poppins text-12p"
                             :to="grandchild.url"
                           >
                             {{ grandchild.text }}
@@ -208,7 +214,6 @@
               </ul>
             </div>
           </div>
-    
 
           <router-link to="/">
             <nuxt-img
@@ -226,7 +231,7 @@
           <div v-if="section.right_menu" class="hidden md:flex">
             <div
               v-if="section.right_menu && section.left_menu.items"
-              class="hidden font-poppins justify-end px-3 items-center w-full md:flex h-full"
+              class="hidden font-poppins justify-end px-3 items-center w-full md:flex h-full text-14px"
             >
               <ul
                 v-for="(item, i) in section.right_menu.items"
@@ -235,20 +240,34 @@
               >
                 <li
                   class="relative flex justify-between w-full overflow-visible"
-                  @mouseenter="hoveredItem = i"
-                  @mouseleave="hoveredItem = null"
-                  @focus="hoveredItem = i"
-                  @mouseover="hoveredItem = i"
+                  @mouseenter="hoveredItemdrt = i"
+                  @mouseleave="hoveredItemrt = null"
+                  @focus="hoveredItemrt = i"
+                  @mouseover="hoveredItemrt = i"
                 >
                   <!-- Parent Item Text -->
-                  <div class="p-4 w-full flex" @focus="hoveredItem = i">
+                  <div class="p-4 w-full flex" @focus="hoveredItemrt = i">
                     <router-link
-                      class=" uppercase  relative group flex justify-center items-center"
+                      class="uppercase relative group flex justify-center items-center"
                       :class="i == 0 ? ' ' : ''"
                       :to="item.url"
-                      ><span class="py-1 px-0 ">{{ item.text }}</span>
-                      <span class="absolute  left-0 bottom-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>  
-                      </router-link>
+                      ><span class="py-1 px-0">{{ item.text }}</span>
+                      <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
+                      ></span>
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="25px"
+                        viewBox="0 -960 960 960"
+                        width="25px"
+                        fill="#1c1c1c"
+                      >
+                        <path
+                          d="M480-353 240-593l46.67-46.67 193.33 193 193.33-193L720-593 480-353Z"
+                        />
+                      </svg>
+                    </router-link>
                   </div>
 
                   <!-- First Level Submenu -->
@@ -256,19 +275,19 @@
                     v-if="item.childrens && item.childrens.length > 0"
                     :class="[
                       'submenu',
-                      { 'submenu-visible': hoveredItem === i },
+                      { 'submenu-visible': hoveredItemrt === i },
                     ]"
                     class="p-4 py-2 sm:py-5 z-30 w-40 bg-white shadow-sm"
-                    @mouseenter="hoveredItem = i"
-                    @mouseleave="hoveredItem = null"
+                    @mouseenter="hoveredItemrt = i"
+                    @mouseleave="hoveredItemrt = null"
                   >
                     <li
                       v-for="(child, ii) in item.childrens"
                       :key="ii"
                       class="py-1 hover:underline relative"
-                      @mouseenter="hoveredChild = ii"
-                      @mouseleave="hoveredChild = null"
-                      @mouseover="hoveredChild = ii"
+                      @mouseenter="hoveredChildrt = ii"
+                      @mouseleave="hoveredChildrt = null"
+                      @mouseover="hoveredChildrt = ii"
                     >
                       <nuxt-link
                         class="flex whitespace-nowrap font-base justify-between items-center text-12p"
@@ -301,12 +320,13 @@
                         :class="[
                           'second-level-submenu',
                           {
-                            'second-level-submenu-visible': hoveredChild === ii,
+                            'second-level-submenu-visible':
+                              hoveredChildrt === ii,
                           },
                         ]"
                         class="w-40 bg-white z-30 p shadow-sm sm:px-3 md:px-5 py-1 sm:py-3 md:py-5"
-                        @mouseenter="hoveredChild = ii"
-                        @mouseleave="hoveredChild = null"
+                        @mouseenter="hoveredChildrt = ii"
+                        @mouseleave="hoveredChildrt = null"
                       >
                         <li
                           v-for="(grandchild, iii) in child.childrens"
@@ -327,10 +347,110 @@
               </ul>
             </div>
           </div>
-    
         </div>
 
         <div class="flex items-center justify-end icons">
+          <div
+            v-if="
+              $settings.sections.header.icons.currency &&
+              $settings.store_currencies.length > 1
+            "
+            class="relative mx-1"
+          >
+            <div
+              v-if="iconMenu == 'currency'"
+              class="absolute z-50 flex flex-col bg-white text-13.6px font-poppins rounded-md top-5"
+            >
+              <a
+                class="p-2 m-1 hover:bg-gray-50 whitespace-nowrap"
+                v-for="cur of $settings.store_currencies"
+                :key="cur.code"
+                :href="`?cur=${cur.code}`"
+                >{{ cur.name }} ( {{ cur.code }} )</a
+              >
+            </div>
+          </div>
+
+          <button
+            @click="iconMenu = iconMenu == 'currency' ? null : 'currency' ; openCurrency=!openCurrency"
+            
+            v-if="
+              $settings.sections.header.icons.currency &&
+              $settings.store_currencies.length > 1
+            "
+            title="Currency"
+            class="item hidden md:block p-1.5 text-black"
+          >
+            <span class="text-sm flex space-x-1">
+              <span> {{ $store.state.currency.code }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: openCurrency ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+          <div
+            v-if="
+              $settings.sections.header.icons.language &&
+              $settings.store_languages.length > 1
+            "
+            class="relative mx-1"
+          >
+            <div
+              v-if="iconMenu == 'language'"
+              class="absolute z-50 flex flex-col bg-white rounded-md top-5 text-13.6px font-poppins"
+            >
+              <a
+                class="p-2 m-1 hover:bg-gray-50 whitespace-nowrap"
+                v-for="lang of $settings.store_languages"
+                :key="lang.code"
+                :href="`?lang=${lang.code}`"
+                >{{ lang.name }} ( {{ lang.code }} )</a
+              >
+            </div>
+          </div>
+          <button
+            @click="iconMenu = iconMenu == 'language' ? null : 'language';openLanguage=!openLanguage"
+            v-if="
+              $settings.sections.header.icons.language &&
+              $settings.store_languages.length > 1
+            "
+            title="Language"
+            class="item hidden md:block p-1.5 text-black"
+          >
+            <span class="text-sm flex space-x-1">
+              <span> {{ $store.state.language.code }}</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#5f6368"
+                  :style="{
+                    transform: openLanguage ? 'rotate(90deg)' : 'rotate(270deg)',
+                  }"
+                >
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+
           <router-link
             v-if="$settings.sections.header.icons.account"
             to="/account/orders"
@@ -407,7 +527,8 @@
                     fill="currentColor"
                     d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
                     class=""
-                  ></path></svg></si-svg>
+                  ></path>
+                </svg></si-svg>
             </button>
             <input
               autofocus
@@ -433,8 +554,9 @@
                     fill="currentColor"
                     d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
                     class=""
-                  ></path></svg
-              ></si-svg>
+                  ></path>
+                </svg>
+              </si-svg>
             </button>
           </form>
         </div>
@@ -470,11 +592,20 @@ export default {
           image: "https://www.svgrepo.com/show/333611/tiktok.svg",
         },
       ],
+      openLanguage:false,
+      openCurrency:false,
       hoveredChild: null,
       activeId: null,
       activeChildid: null,
       hoveredItem: null,
       showMenuList: false,
+
+      hoveredChildrt: null,
+      activeIdrt: null,
+      activeChildidrt: null,
+      hoveredItemrt: null,
+      showMenuListrt: false,
+
       lastScrollTop: 0,
       isHidden: false,
       isFixed: true,
@@ -499,3 +630,47 @@ export default {
   },
 };
 </script>
+<style scoped>
+.parent-list {
+  position: relative;
+}
+.menuTextStyle {
+  font-family: Poppins, sans-serif;
+  line-height: 22px;
+  font-weight: 500;
+  text-align: -webkit-match-parent;
+}
+.menuTextStyle {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all 0.8s ease-in-out;
+}
+
+.submenu-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.second-level-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.second-level-submenu-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+</style>

@@ -15,7 +15,7 @@
             <div v-if="loading.cart" class="flex items-center justify-center my-5">
                 <si-loader></si-loader>
             </div>
-            
+        
           <div class=" w-full flex flex-col md:flex-row sm:gap-5 md:gap-[50px]  "> 
             <div class="flex flex-col cart-items p-2 md:w-2/3 w-full">
                 <si-cart-item v-for="(item,i) in items" @remove="remove" :item="item" :key="i" />
@@ -101,6 +101,7 @@ export default {
             if(ids.length > 0){
                 try{
                     const response = await this.$storeino.upsells.search({ 'with': ['products'],'product._id-in': ids, limit: 1000 });
+                    if(response.data.results)
                     this.upsells = response.data.results;
                 }catch(e){
                     console.log({e});
@@ -115,6 +116,7 @@ export default {
             if(ids.length > 0){
                 try{
                     const response = await this.$storeino.products.search({ '_id-in': ids, limit: 1000 });
+                    
                     const products = response.data.results;
                     for (const item of this.$store.state.cart) {
                         const cartItem = {};

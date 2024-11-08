@@ -49,6 +49,7 @@ export default {
             if(ids.length > 0){
                 try{
                     const response = await this.$storeino.products.search({ '_id-in': ids, limit: 1000 });
+                    if(response.data.results)
                     this.items = response.data.results;
                 }catch(e){
                     console.log({e});

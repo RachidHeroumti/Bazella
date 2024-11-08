@@ -26,7 +26,7 @@
           <div
             class="absolute inset-0 flex justify-center flex-col items-center z-30 p-4"
           >
-            <h1 class="font-tenor text-[24px] md:text-[36px] mb-1 uppercase">
+            <h1 class="font-tenor text-[20px] md:text-[36px] mb-1 uppercase">
               {{ item.title }}
             </h1>
             <p class="text-12px md:text-16px mb-1">{{ item.description }}</p>

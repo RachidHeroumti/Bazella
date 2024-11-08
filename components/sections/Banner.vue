@@ -29,7 +29,7 @@
                 class="z-50 absolute left-0 top-0 w-full h-full flex flex-col items-center text-white"
                 :class="i === '_1' ? 'justify-end' : 'justify-center'"
               >
-               <h1 class=" uppercase font-tenor-sans text-[36px] md:text-[63px] tracking-0.25rem">{{ item.title }}</h1>
+               <h1 class=" uppercase font-tenor-sans text-[20px]  md:text-[36px]  lg:text-[63px] tracking-0.25rem">{{ item.title }}</h1>
                <p class=" my-[5px]">{{ item.description }}</p>
                 <button class=" bg-black text-13.6px  text-white  uppercase px-[20px] py-[11px]" >
                   <nuxt-link 

@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="items.length > 0">
     <div class="m-2">
-      <h2 class="text-2xl">{{ $settings.sections.post.related.title }}</h2>
+      <h2 class="md:text-2xl text-[20px]">{{ $settings.sections.post.related.title }}</h2>
     </div>
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>
@@ -37,6 +37,7 @@ export default {
               "_id-ne": this.item._id,
               "categories._id-in": ids
             })
+            if(data.results)
           this.items = data.results
       }catch(e){
         console.log({e});
