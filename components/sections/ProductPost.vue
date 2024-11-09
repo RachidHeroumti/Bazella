@@ -1,6 +1,7 @@
 <template >
     <div
-    class="overflow-hidden container   md:px-8 md:py-4  bg-black md:bg-white my-10px md:my-[75px] "
+    class="overflow-hidden container   md:px-8 md:mt-20 mt-10 
+     bg-black md:bg-white  "
     v-if=" this.$settings.sections.product.post.active"> 
   <div
     class="flex flex-col justify-center md:justify-normal max-w-full max-h-screen md:relative"

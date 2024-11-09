@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class=" py-75px my-2 bg-white ">
+        <div class=" md:py-75px py-[20px]  my-2 bg-white ">
             <div class=" mb-[50px] flex flex-col justify-center items-center "> 
                 <h2 class="mb-2  text-36px  text-black uppercase w-full text-center font-tenor-sans ">{{$settings.sections.cart.title}}</h2>
                 <div v-if="!loading.cart && items.length == 0" class="flex flex-col items-center py-1">
@@ -105,6 +105,7 @@ export default {
                     this.upsells = response.data.results;
                 }catch(e){
                     console.log({e});
+                    this.$sentry.captureException(e);
                 }
             }
             this.loading.upsells = false;
@@ -143,6 +144,7 @@ export default {
                     this.calcTotal();
                 }catch(e){
                     console.log({e});
+                    this.$sentry.captureException(e);
                 }
             }
             this.loading.cart = false;

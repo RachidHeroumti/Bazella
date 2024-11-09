@@ -1,8 +1,8 @@
 <template>
-    <div class="w-auto md:w-full text-16px md:text-[20px]">
+    <div class="w-auto md:w-full text-13.6px md:text-[20px] ">
         <meta itemprop="priceCurrency" :content="$store.state.currency.code" />
-        <div class="price flex justify-center md:justify-start my-2 space-x-2 me-2 text-black font-tenor-sans" v-if="type=='simple'">
-            <span class=" w-full text-center">{{ price.salePrice }}{{ $store.state.currency.symbol }}</span>
+        <div class="price flex justify-center  my-2 space-x-2 me-2  text-black font-tenor-sans" v-if="type=='simple'">
+            <span class=" text-center">{{ price.salePrice }}{{ $store.state.currency.symbol }}</span>
             <span class="flex "></span>
             <span class="relative" v-if="price.comparePrice > 0">
                 <b class=""><del>{{ price.comparePrice }}{{ $store.state.currency.symbol }}</del>

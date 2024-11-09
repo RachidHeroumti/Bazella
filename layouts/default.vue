@@ -1,5 +1,9 @@
 <template>
-    <div class="bg-white transition-all delay-300" :class="$store.state.showHeaderMenu ? 'to-right' : ''">
+    <div class="maintenance_page"
+             v-if="$settings.store_maintenance || !show_store_maintenance">
+            <sections-maintenance @openStore="openStore" />
+            </div>
+    <div v-else class="bg-white transition-all delay-300" :class="$store.state.showHeaderMenu ? 'to-right' : ''">
         <component :is="'style'">
             :root{ --primary-rgb: {{ rgb.r }}, {{rgb.g}}, {{ rgb.b }}; --primary-color: rgb(var(--primary-rgb)); }
             .bg-primary{ background-color: var(--primary-color); }
@@ -54,6 +58,7 @@ export default {
     head(){
         return {
             title: this.$store.state.seo.title,
+           
             meta: [
                 { hid: 'description', name: 'description', content: this.$store.state.seo.description },
                 { hid: 'keywords', name: 'keywords', content: this.$store.state.seo.keywords.join(',') },
@@ -89,6 +94,8 @@ export default {
     },
     data() {
         return {
+          show_store_maintenance: true,
+          show_store_maintenance_unlocked: false,
             rgb: { r: 0, g: 130, b: 70 },
             otherLinks: [
                 ]
@@ -110,6 +117,13 @@ export default {
         }
     },
     methods: {
+      openStore(active) {
+      this.show_store_maintenance = active;
+    },
+    closeStore() {
+      document.cookie = `store_maintenance_code=${this.code}`;
+      this.show_store_maintenance = false;
+    },
     }
 }
 </script>

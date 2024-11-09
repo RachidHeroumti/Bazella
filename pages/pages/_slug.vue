@@ -78,6 +78,7 @@ export default {
         }catch(e){
             console.log({e});
             this.$nuxt.error({ statusCode: 404, message: 'post_not_found' })
+            this.$sentry.captureException(e);
         }
     },
     mounted(){

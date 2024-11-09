@@ -6,10 +6,10 @@
     <div class="flex flex-wrap" v-if="item">
       <meta itemprop="productID" :content="item._id" />
       <div class="w-full md:w-1/2 ">
-        <div class="relative flex flex-col md:flex-row  ">
+        <div class="relative flex flex-col xl:flex-row  ">
           
-          <div class=" w-full md:w-[120px]  overflow-auto flex   md:flex-col px-2 ">
-            <div class="flex md:flex-col  ">
+          <div class=" w-full xl:w-[120px]  overflow-auto flex   md:flex-col px-2 ">
+            <div class=" flex xl:flex-col xl:w-full ">
               <si-image
                 width="76"
                 height="105"
@@ -138,7 +138,7 @@
             <p class=" mb-5  text-12x font-poppins text-gray-800">{{ item.description }}</p> 
             <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
             <div class=" border mt-10px border-gray-500  w-full p-15px transition-opacity duration-1000 ease-in  " >
-              <h1 class=" text-12px font-poppins text-center uppercase tracking-0.25rem w-full font-light  flex"
+              <h1 class=" text-12px font-tenor-sans text-center uppercase w-full font-light  flex"
               @click="showshippinginfo=!showshippinginfo"
               >
                 <span class=" w-full text-center " >{{ $settings.sections.product.shipping_info.text}}</span>
@@ -485,6 +485,7 @@ export default {
     } catch (e) {
       console.log(e);
       this.$nuxt.error({ statusCode: 404, message: "product_not_found" });
+      this.$sentry.captureException(e);
     }
   },
   mounted() {

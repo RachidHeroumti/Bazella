@@ -40,6 +40,7 @@ export default {
           app[`loaded_${uid}`] = { manifest, html, css, js };
         } catch (err) {
             console.log({err});
+            this.$sentry.captureException(err);
         }
       }
       const html = document.createElement(`div`);

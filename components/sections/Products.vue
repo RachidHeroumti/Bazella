@@ -1,19 +1,19 @@
 <template>
-  <div class="container my-[40px]">
+  <div class="container md:mt-20 mt-10 ">
     <div class=" mb-[30px] ">
       <h2 class=" text-black font-medium w-full text-center
-       pb-15px font-tenor-sans tracking-0.2em text-[20px] md:text-3xl uppercase ">{{ title }}</h2>
+       md:mb-10 mb-4 font-tenor-sans tracking-0.2em text-[20px] md:text-3xl uppercase ">{{ title }}</h2>
       <div class="flex justify-center " v-if="section.show_more_text">
       <nuxt-link class=" border border-gray-100 hover:border-black" :to="section.show_more_url">
-        <span class="uppercase font-tenor-sans text-12px font-normal px-15px py-8">{{ section.show_more_text }}</span>
+        <span class="uppercase font-tenor-sans text-12px font-normal px-15px ">{{ section.show_more_text }}</span>
       </nuxt-link>
     </div>
     </div>
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>
     </div>
-    <div class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full ">
-      <div v-for="(item, i) in items" :key="i" class="w-full p-2">
+    <div class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-2">
+      <div v-for="(item, i) in items" :key="i" class="w-full ">
         <si-product :item="item"></si-product>
       </div>
     </div>
@@ -64,6 +64,7 @@ export default {
           }
         }catch(e){
           console.log({e});
+          this.$sentry.captureException(e);
         }
         this.loading = false;
     }

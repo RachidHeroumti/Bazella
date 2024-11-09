@@ -24,7 +24,7 @@
     <div class="absolute left-0 w-full flex items-center justify-center z-30">
       <nuxt-link class="flex justify-center w-full" :to="computedLink">
         <span
-          class="p-1 m-auto flex justify-center items-center px-3 leading-4 text-center text-black font-normal bg-white text-14px font-poppins tracking-0.25rem uppercase 
+          class="p-1 m-auto flex justify-center items-center px-3 leading-4 text-center text-black font-normal bg-white text-14px font-poppins uppercase 
           h-32px md:h-36px"
         >
           {{ item.name }}
@@ -61,7 +61,7 @@
         <span
         style="background-color: #585065;"
           class=" m-auto flex justify-center items-center  leading-4
-           text-center text-white font-normal px-5px  p-1  md:px-20px md:py-3 text-12px md:text-14px font-poppins tracking-0.25rem uppercase "
+           text-center text-white font-normal px-5px  p-1  md:px-20px md:py-3 text-12px md:text-14px font-poppins  uppercase "
         >
          shop all
           
@@ -71,7 +71,7 @@
         <span
         style="background-color: #585065;"
           class="p-1 m-auto flex justify-center items-center  leading-4
-           text-center text-white font-normal  px-5px   md:px-20px md:py-3 text-12px md:text-14pxfont-poppins tracking-0.25rem uppercase "
+           text-center text-white font-normal  px-5px   md:px-20px md:py-3 text-12px md:text-14pxfont-poppins uppercase "
         >
           {{ item.name }}
           <span v-if="item.childrens.length > 0">

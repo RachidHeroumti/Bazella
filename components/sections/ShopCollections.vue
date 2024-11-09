@@ -18,7 +18,7 @@
   
             <div class="overflow-hidden w-full">
               <div
-                class=" flex w-full overflow-x-scroll md:overflow-x-hidden  md:grid grid-cols-1 md:grid-cols-3"
+                class=" flex w-full overflow-x-scroll   "
               >
                 <div
                   class="w-full py-5 flex"
@@ -130,6 +130,7 @@
         }
       } catch (e) {
         console.log({ e });
+        this.$sentry.captureException(e);
       }
       this.loading = false;
     },

@@ -37,9 +37,21 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
   modules: [
-    '@nuxt/image',
-    '@nuxtjs/axios'
+    '@nuxtjs/sentry',
+    // '@nuxt/image',
+    // '@nuxtjs/axios',
+    // 'nuxt-compress',
+    // 'nuxt-ssr-cache'
   ],
+  sentry: {
+    dsn: "https://eeadd4a49212a8a9366043f9ed580788@logs.storeino.com/39",
+    config: {
+      debug: true
+    },
+    clientConfig: {
+      dsn: "https://eeadd4a49212a8a9366043f9ed580788@logs.storeino.com/39"
+      }
+  },
   axios: {},
   pwa: {
     manifest: {

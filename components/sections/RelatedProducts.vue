@@ -1,7 +1,8 @@
 <template>
-  <div class="container my-10px md:my-[75px]" v-if="items.length > 0">
+  <div class="container md:mt-20 mt-10 " v-if="items.length > 0">
     <div class=" md:mb-10px mb-[36px]">
-      <h1 class=" bg-re-500 text-black font-tenor-sans text-20px  md:text-[30px] uppercase text-center w-full ">{{ $settings.sections.product.related.title }}</h1>
+      <h1 class=" bg-re-500 text-black font-tenor-sans 
+      md:mb-10 mb-4 text-20px  md:text-[30px] uppercase text-center w-full ">{{ $settings.sections.product.related.title }}</h1>
     </div>
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>
@@ -44,6 +45,7 @@ export default {
           this.items = data.results
       }catch(e){
         console.log({e});
+        this.$sentry.captureException(e);
       }
       this.loading = false;
   }

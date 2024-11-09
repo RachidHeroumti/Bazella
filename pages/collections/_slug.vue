@@ -42,6 +42,7 @@ export default {
            
         }catch(e){
             console.log({e});
+            this.$sentry.captureException(e);
         }
         this.loading = false;
     },

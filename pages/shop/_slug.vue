@@ -38,7 +38,7 @@
 
             <!--collors-->
             <h2
-              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins  uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.colors.active"
               @click="showCollors = !showCollors"
             >
@@ -112,7 +112,7 @@
 
             <!--prices-->
             <h2
-              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins  uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.colors.active"
               @click="showPrice = !showPrice"
             >
@@ -160,7 +160,7 @@
             <!--sizes-->
 
             <h2
-              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins  uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.colors.active"
               @click="showSizes = !showSizes"
             >
@@ -244,7 +244,7 @@
 
             <!--collections-->
             <h2
-              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins  uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.collections.active"
               @click="showCollections = !showCollections"
             >
@@ -366,7 +366,7 @@
 
             <!--tags-->
             <h2
-              class="text-14px font-poppins tracking-0.25rem uppercase  px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins  uppercase  px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.tags.active"
               @click="showTags = !showTags"
             >
@@ -444,7 +444,7 @@
             <hr v-if="$settings.sections.shop.sidebar.tags.active" class=" mb-5"/>
             <!--brands-->
             <h2
-              class="text-14px font-poppins tracking-0.25rem uppercase px-15px mb-2 flex justify-between"
+              class="text-14px font-poppins uppercase px-15px mb-2 flex justify-between"
               v-if="$settings.sections.shop.sidebar.brands.active"
               @click="showBrands = !showBrands"
             >
@@ -508,9 +508,9 @@
 
       <div class="w-full md:w-3/4">
       <div class="bg-white">
-          <div class=" flex "> 
-            <sections-shop-collections></sections-shop-collections>
-          </div>
+        <div v-if="$route.path === '/shop'" class="flex">   
+      <sections-shop-collections></sections-shop-collections>  
+         </div> 
           <div class="border-b">
 
 
@@ -590,6 +590,10 @@
               <si-product :item="item"></si-product>
             </div>
           </div>
+
+          <div v-if="$route.path.startsWith('/shop/')" class="flex">   
+      <sections-shop-collections></sections-shop-collections>  
+    </div> 
           <div class="flex items-center justify-center w-full p-2">
             <ul
               class="flex space-x-2 font-poppins font-base text-13p text-gray-500"
@@ -654,9 +658,13 @@
                         </button>
                         -->
           </div>
+
+
+
         </div>
       </div>
     </div>
+    
     <sections-two-collections v-if="$settings.sections.collections.active"></sections-two-collections>
     <sections-upsell-offers ></sections-upsell-offers>
     <sections-posts v-if="$settings.sections.posts.active"></sections-posts>
@@ -929,6 +937,7 @@ export default {
         this.collections = data.results;
       } catch (e) {
         console.log({ e });
+        this.$sentry.captureException(e);
       }
       this.loading.collections = false;
     },
@@ -941,6 +950,7 @@ export default {
         this.brands = data.results;
       } catch (e) {
         console.log({ e });
+        this.$sentry.captureException(e);
       }
       this.loading.brands = false;
     },
@@ -960,6 +970,7 @@ export default {
         this.paginate = data.paginate;}
       } catch (e) {
         console.log({ e });
+        this.$sentry.captureException(e);
       }
       this.loading.products = false;
     },

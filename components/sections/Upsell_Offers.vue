@@ -1,5 +1,5 @@
 <template>
-   <div class=" container"> 
+   <div class=" container md:mt-20 mt-10 "> 
     <div 
      v-if="$settings.sections.upsellbanner.active"
     class=" w-full grid grid-cols-1 md:grid-cols-2 gap-5"

@@ -1,6 +1,6 @@
 <template>
-    <div class="container ">
-        <div class="flex mb-2 relative md:py-[40px] py-[10px]">
+    <div class="container   ">
+        <div class="flex relative ">
 
             <!-- <transition name="slideleft" v-if="$settings.sections.blog.sidebar.active">
                 <div :class="showSideBar ? 'show':'hide'" class="w-80 md:w-1/4 fixed hidden md:block md:top-0 h-full top-0 bottom-0 bg-white md:relative z-10">
@@ -30,7 +30,7 @@
             </transition> -->
 
             <div class="w-full ">
-                <div class="bg-white">
+                <div class=" ">
                     <!-- <div class=" border-b">
                         <div class="flex justify-between items-center p-2">
                             <button @click="showSideBar = true" aria-label="Search button" class="flex block md:hidden items-center flex-col p-2 bg-gray-100 rounded-md mx-1 hover:bg-gray-200">
@@ -58,7 +58,8 @@
                         <h1 class="py-3">{{ $settings.sections.blog.empty_text }}</h1>
                     </div>
 
-                    <h1 class=" text-36px font-tenor-sans text-black mb-[10px] md:mb-[50px] w-full text-center uppercase tracking-0.25rem"
+                    <h1 class=" text-36px font-tenor-sans text-black 
+                     md:mb-10 mb-4 w-full text-center uppercase "
                     >Journal</h1>
                     <div class="flex flex-wrap">
                         <div v-for="(item, i) in items" :key="i" class="p-2" :class="gridClass">
@@ -153,6 +154,7 @@ export default {
                 this.products = data.results;
             }catch(e){
                 console.log({e});
+                this.$sentry.captureException(e);
             }
             this.loading.products = false;
         },
@@ -165,6 +167,7 @@ export default {
                 this.categories = data.results;
             }catch(e){
                 console.log({e});
+                this.$sentry.captureException(e);
             }
             this.loading.categories = false;
         },
@@ -178,6 +181,7 @@ export default {
                 this.items = data.results
             }catch(e){
                 console.log({e});
+                this.$sentry.captureException(e);
             }
             this.loading.pages = false;
         },

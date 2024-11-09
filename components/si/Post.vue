@@ -1,5 +1,5 @@
 <template>
-<div class="h-full flex relative bg-red-400  text-16px font-tenor-sans ">
+<div class="h-full flex relative text-16px font-tenor-sans ">
     <div class="w-full flex flex-col h-full bg-white  ">
         <div class="w-100 pb-2/3 relative pb-5 ">
             <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">

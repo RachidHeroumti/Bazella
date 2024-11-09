@@ -53,6 +53,7 @@ export default {
                     this.items = response.data.results;
                 }catch(e){
                     console.log({e});
+                    this.$sentry.captureException(e);
                 }
             }
             this.loading.wishlist = false;

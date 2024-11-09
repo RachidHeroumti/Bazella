@@ -1,29 +1,59 @@
 <template>
-    <div class="container my-2 bg-white">
+    <div class="container py-[10px]  md:py-[20px]  bg-white font-poppins ">
         <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
         <div v-if="item" class="">
-            <h1 class="m-2">{{ item.title }}</h1>
+            <h1 class="m-2 font-tenor-sans text-[20px] md:text-[36px] text-center ">{{ item.title }}</h1>
             <hr class="m-0">
-            <div class="relative p-2 m-2 bg-fixed bg-center bg-cover border-4 border-white shadow h-80" :style="`background-image:url('${item.image ? item.image.url : null }')`"></div>
-            <p class="m-2"><small>{{ item.excerpt }}</small></p>
-            <hr>
-            <div  v-if="item" class="p-2 mx-2 my-3 bg-white rounded-md description" id="description" v-html="item.content"></div>
+            <!-- <div class="relative p-2 m-2 bg-fixed bg-center bg-cover border-4 border-white shadow h-80" 
+            :style="`background-image:url('${item.image ? item.image.url : null }')`"></div> -->
+            <div class=" w-full "> 
+                <nuxt-img
+                class=" w-full object-cover "
+                :src="item.image ? item.image.url : null"
+                alt="post-pic"
+                ></nuxt-img>
+            </div>
+            <p class="m-2 text-center"><small>{{ item.excerpt }}</small></p>
+            
+            <div  v-if="item" class="p-2 mx-2 my-3 bg-white rounded-md description text-center flex justify-center " id="description" v-html="item.content"></div>
+
+
             <div class="flex items-center">
-                <div class="flex w-full border-b border-gray-200 "></div>
-                <h3 class="p-2  whitespace-nowrap">{{ $settings.sections.post.share_buttons.title }}</h3>
-                <div class="flex w-full border-b border-gray-200 "></div>
+               
+                <!-- <h3 class="p-2  whitespace-nowrap text-13.6px font-poppins text-center w-full ">{{ $settings.sections.post.share_buttons.title }}</h3> -->
+               
             </div>
             <div class="flex justify-center ">
-                <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center h-12 m-2">
-                    <a class="flex h-full" :href="item.url" target="_blank" rel="noopener noreferrer">
-                        <si-image class="w-10 h-10" width="40" height="40" :src="item.image" :alt="item.name"/>
-                    </a>
-                </div>
+                <div
+                v-for="item in socialMedia.filter(
+                  (s) => $settings.sections.product.share_buttons[s.name]
+                )"
+                :key="item.name"
+                class="flex items-center justify-center  m-2"
+              >
+            
+                <a
+                  class="flex h-full"
+                  :href="item.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <si-image
+                    class="w-5 h-5"
+                    width="20"
+                    height="20"
+                    :src="item.image"
+                    :alt="item.name"
+                  />
+                </a>
+                <span class=" text-12px text-center ps-1 pe-3 ">{{ item.name }}</span>
+              </div>
             </div>
         </div>
         <hr>
+
         <div v-if="item" class="related">
             <sections-related-posts :item="item"/>
         </div>
@@ -78,6 +108,7 @@ export default {
         }catch(e){
             console.log({e});
             this.$nuxt.error({ statusCode: 404, message: 'post_not_found' })
+            this.$sentry.captureException(e);
         }
     },
     mounted() {

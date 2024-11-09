@@ -1,5 +1,5 @@
 <template>
-  <div class="container md:py-75px py-10px">
+  <div class="container md:mt-20 mt-10 ">
     <div v-if="loading" class="flex items-center justify-center">
       <si-loader></si-loader>
     </div>
@@ -9,16 +9,16 @@
       <div v-if="items.length > 0">
         <div
           v-if="$settings.sections.collections.active"
-          class="flex flex-wrap gap-5"
+          class="flex flex-wrap "
         >
           <h2
-            class="text-black font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em text-[20px] md:text-3xl uppercase"
+            class="text-black font-medium w-full text-center md:mb-10 mb-4 font-tenor-sans tracking-0.2em text-[20px] md:text-3xl uppercase"
           >
             {{ $settings.sections.collections.title }}
           </h2>
 
         
-           <div class="overflow-hidden   px-5 py-3 md:px-8 md:py-4 grid grid-cols-2 md:grid-cols-4 w-full gap-2" 
+           <div class="o verflow-hidden    md:px-8  grid grid-cols-2 md:grid-cols-4 w-full gap-2" 
            >
                 <div class="w-full" 
                 v-for="(item,i) in items" :key="i" > 
@@ -135,6 +135,7 @@ export default {
       }
     } catch (e) {
       console.log({ e });
+      this.$sentry.captureException(e);
     }
     this.loading = false;
   },

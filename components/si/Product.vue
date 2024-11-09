@@ -15,7 +15,7 @@
             </div>
             <div class=" p-2 text-center  ">
                 <nuxt-link :to="`/products/${item.slug}`">
-                    <span class=" text-center md:text-[20px] uppercase text-14px ">{{ item.name }}</span>
+                    <span class=" text-center md:text-[20px] uppercase text-14px truncate ">{{ item.name }}</span>
                 </nuxt-link>
             </div>  
             <si-product-price :type="item.type" :price="item.price" :variants="item.variants"></si-product-price>

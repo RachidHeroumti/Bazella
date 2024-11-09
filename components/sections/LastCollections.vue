@@ -1,5 +1,5 @@
 <template>
-    <div class="container py-10px md:py-75px  w-full ">
+    <div class="container  md:mt-20 mt-10   w-full   ">
       <div v-if="loading" class="flex items-center justify-center">
         <si-loader></si-loader>
       </div>
@@ -8,10 +8,11 @@
         <div v-if="items.length > 0">
           <div
             v-if="$settings.sections.collection_section_3.active"
-            class="flex flex-wrap gap-5"
+            class="flex flex-wrap "
           >
             <h2
-              class="text-black font-medium w-full text-center pb-15px font-tenor-sans tracking-0.2em
+              class="text-black font-medium w-full text-center 
+              md:mb-10 mb-4  font-tenor-sans tracking-0.2em
                text-[20px] md:text-3xl uppercase"
             >
               {{ $settings.sections.collection_section_3.title }}
@@ -21,7 +22,7 @@
                 class="flex flex-wrap"
               >
                 <div
-                  class="w-full py-5"
+                  class="w-full "
                   v-for="(item, i) in items"
                   :key="i"
                 >
@@ -104,6 +105,7 @@
           >
         </div>
       </div>
+
     </div>
   </template>
   <script>
@@ -129,6 +131,7 @@
         }
       } catch (e) {
         console.log({ e });
+        this.$sentry.captureException(e);
       }
       this.loading = false;
     },
