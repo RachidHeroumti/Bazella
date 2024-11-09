@@ -1,52 +1,4 @@
 {
-  "SiAppLoader": {
-    "description": "Auto imported from components/si/AppLoader.vue"
-  },
-  "SiAvatar": {
-    "description": "Auto imported from components/si/Avatar.vue"
-  },
-  "SiCarousel": {
-    "description": "Auto imported from components/si/Carousel.vue"
-  },
-  "SiCartItem": {
-    "description": "Auto imported from components/si/CartItem.vue"
-  },
-  "SiCollection": {
-    "description": "Auto imported from components/si/Collection.vue"
-  },
-  "SiFullImage": {
-    "description": "Auto imported from components/si/FullImage.vue"
-  },
-  "SiImage": {
-    "description": "Auto imported from components/si/Image.vue"
-  },
-  "SiLoader": {
-    "description": "Auto imported from components/si/Loader.vue"
-  },
-  "SiLoaderGlobal": {
-    "description": "Auto imported from components/si/LoaderGlobal.vue"
-  },
-  "SiPost": {
-    "description": "Auto imported from components/si/Post.vue"
-  },
-  "SiPriceRange": {
-    "description": "Auto imported from components/si/PriceRange.vue"
-  },
-  "SiProduct": {
-    "description": "Auto imported from components/si/Product.vue"
-  },
-  "SiProductPrice": {
-    "description": "Auto imported from components/si/ProductPrice.vue"
-  },
-  "SiProductQuantity": {
-    "description": "Auto imported from components/si/ProductQuantity.vue"
-  },
-  "SiProductVariants": {
-    "description": "Auto imported from components/si/ProductVariants.vue"
-  },
-  "SiSvg": {
-    "description": "Auto imported from components/si/Svg.vue"
-  },
   "SectionsBanner": {
     "description": "Auto imported from components/sections/Banner.vue"
   },
@@ -118,5 +70,53 @@
   },
   "SectionsUpsellOffers": {
     "description": "Auto imported from components/sections/Upsell_Offers.vue"
+  },
+  "SiAppLoader": {
+    "description": "Auto imported from components/si/AppLoader.vue"
+  },
+  "SiAvatar": {
+    "description": "Auto imported from components/si/Avatar.vue"
+  },
+  "SiCarousel": {
+    "description": "Auto imported from components/si/Carousel.vue"
+  },
+  "SiCartItem": {
+    "description": "Auto imported from components/si/CartItem.vue"
+  },
+  "SiCollection": {
+    "description": "Auto imported from components/si/Collection.vue"
+  },
+  "SiFullImage": {
+    "description": "Auto imported from components/si/FullImage.vue"
+  },
+  "SiImage": {
+    "description": "Auto imported from components/si/Image.vue"
+  },
+  "SiLoader": {
+    "description": "Auto imported from components/si/Loader.vue"
+  },
+  "SiLoaderGlobal": {
+    "description": "Auto imported from components/si/LoaderGlobal.vue"
+  },
+  "SiPost": {
+    "description": "Auto imported from components/si/Post.vue"
+  },
+  "SiPriceRange": {
+    "description": "Auto imported from components/si/PriceRange.vue"
+  },
+  "SiProduct": {
+    "description": "Auto imported from components/si/Product.vue"
+  },
+  "SiProductPrice": {
+    "description": "Auto imported from components/si/ProductPrice.vue"
+  },
+  "SiProductQuantity": {
+    "description": "Auto imported from components/si/ProductQuantity.vue"
+  },
+  "SiProductVariants": {
+    "description": "Auto imported from components/si/ProductVariants.vue"
+  },
+  "SiSvg": {
+    "description": "Auto imported from components/si/Svg.vue"
   }
 }
