@@ -36,25 +36,25 @@ export default {
             loading: true,
             item: null,
             socialMedia: [
-                {
+            {
                     name: 'whatsapp',
                     url: 'https://api.whatsapp.com/send?text={title}%20{url}',
-                    image: 'https://storeno.b-cdn.net/themes/palest/whatsapp.png'
+                    image: 'https://www.svgrepo.com/show/510342/whatsapp.svg'
                 },
                 {
                     name: 'facebook',
-                    image: 'https://storeno.b-cdn.net/themes/palest/facebook.png',
+                    image: 'https://www.svgrepo.com/show/506656/facebook.svg',
                     url: 'https://www.facebook.com/sharer.php?u={url}'
                 },
                 {
                     name: 'twitter',
                     url: 'https://twitter.com/intent/tweet?url={url}&text={title}',
-                    image: 'https://storeno.b-cdn.net/themes/palest/twitter.png'
+                    image: 'https://seeklogo.com/images/T/twitter-x-logo-19D2657BAA-seeklogo.com.png'
                 },
                 {
                     name: 'linkedin',
                     url: 'https://www.linkedin.com/sharing/share-offsite/?url={url}',
-                    image: 'https://storeno.b-cdn.net/themes/palest/linkedin.png'
+                    image: 'https://www.svgrepo.com/show/447138/linkedin-fill.svg'
                 }
             ]
         }

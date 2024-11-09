@@ -6,7 +6,7 @@
     <div class="flex flex-wrap" v-if="item">
       <meta itemprop="productID" :content="item._id" />
       <div class="w-full md:w-1/2 ">
-        <div class="relative flex flex-col md:flex-row ">
+        <div class="relative flex flex-col md:flex-row  ">
           
           <div class=" w-full md:w-[120px]  overflow-auto flex   md:flex-col px-2 ">
             <div class="flex md:flex-col  ">
@@ -22,10 +22,11 @@
               />
             </div>
           </div>
+
           <si-image
             width="500"
             
-            class="bg-white cursor-pointer  w-[500px] h-full hidden md:flex "
+            class="bg-white cursor-pointer  w-[500px] h-full hidden md:flex sticky top-0 "
             @click="$store.state.fullImage = image ? image.src : null"
             :src="image ? image.src : null"
             :alt="item.name"

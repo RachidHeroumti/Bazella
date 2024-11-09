@@ -1,5 +1,5 @@
 <template>
-<div class="flex fixed inset-0 z-20" v-if="show">
+<div class="flex fixed inset-0 z-20 font-tenor-sans " v-if="show">
     <div v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu? 'opacity-50' : 'opacity-0'" class="flex transition-all delay-500 fixed inset-0 bg-black" @click="$store.state.showHeaderMenu=false"></div>
     <transition name="slideleft">
         <div :class="$store.state.showHeaderMenu ? 'move-in' : 'move-out'" class="transition-all delay-500 max-w-full relative flex flex-col bg-gray-100 w-80">
@@ -13,9 +13,9 @@
 
 
             <div v-if="menu">
-                <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col text-black text-13.6px font-poppins bg-white">
+                <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col text-black text-13.6px bg-white">
                     <li class="flex items-center mb-1 justify-between w-full rounded-md bg-white">
-                        <router-link class="p-2 m-1 w-full flex " :to="item.url">{{ item.text }}</router-link>
+                        <router-link class="p-2 m-1 w-full flex uppercase" :to="item.url">{{ item.text }}</router-link>
                         <button class="bg-white p-2 mx-1" @click="activeId = activeId != item._id ? item._id : null">
                             <si-svg>
                                 <svg v-if="item.childrens && item.childrens.length > 0" class="w-3 transform" :class="activeId==item._id ? 'rotate-180': ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
@@ -26,8 +26,8 @@
                     </li>
                     <transition name="slide">
                     <div v-if="item._id == activeId">
-                        <div v-for="(item,i) in item.childrens" :key="i" class="">
-                            <router-link class="  mx-3 p-1  m-1 rounded-md  bg-gray-50 hover:text-green-700 flex" :to="item.url">{{item.text}}</router-link>
+                        <div v-for="(item,i) in item.childrens" :key="i" class="font-poppins">
+                            <router-link class="  mx-3 p-1  m-1 rounded-md  bg-gray-50 hover:text-green-700 flex " :to="item.url">{{item.text}}</router-link>
                             <ul class=" px-2 p-1" v-if="item.childrens && item.childrens.length > 0">
                                 <li v-for="(child,ii) in item.childrens" :key="ii">
                                     <nuxt-link  class="mx-5 p-1   m-1 rounded-md bg-gray-50 hover:text-green-700 flex" :to="child.url">
@@ -41,9 +41,9 @@
                 </ul>
             </div>
             <div v-if="menu_right">
-                <ul v-for="(item, i) in menu_right.items" :key="i" class="flex flex-col text-black text-13.6px font-poppins bg-white">
+                <ul v-for="(item, i) in menu_right.items" :key="i" class="flex flex-col text-black text-13.6px  bg-white">
                     <li class="flex items-center mb-1 justify-between w-full rounded-md bg-white">
-                        <router-link class="p-2 m-1 w-full flex " :to="item.url">{{ item.text }}</router-link>
+                        <router-link class="p-2 m-1 w-full flex uppercase" :to="item.url">{{ item.text }}</router-link>
                         <button class="bg-white p-2 mx-1" @click="activeId = activeId != item._id ? item._id : null">
                             <si-svg>
                                 <svg v-if="item.childrens && item.childrens.length > 0" class="w-3 transform" :class="activeId==item._id ? 'rotate-180': ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
@@ -54,7 +54,7 @@
                     </li>
                     <transition name="slide">
                     <div v-if="item._id == activeId">
-                        <div v-for="(item,i) in item.childrens" :key="i" class="">
+                        <div v-for="(item,i) in item.childrens" :key="i" class=" font-poppins">
                             <router-link class=" mx-3 p-1  m-1  rounded-md  bg-gray-50 hover:text-green-700 flex" :to="item.url">{{item.text}}</router-link>
                             <ul class=" px-2 p-1" v-if="item.childrens && item.childrens.length > 0">
                                 <li v-for="(child,ii) in item.childrens" :key="ii">
@@ -81,9 +81,9 @@
 
 
             <div>
-                <ul v-for="(item, i) in otherMenu" :key="i" class="flex flex-col text-black text-13.6px font-poppins bg-white">
+                <ul v-for="(item, i) in otherMenu" :key="i" class="flex flex-col text-black text-13.6px  bg-white">
                     <li class="flex items-center mb-1 justify-between w-full rounded-md bg-white">
-                        <a class="p-2 m-1 w-full flex hover:bg-gray-50  hover:text-green-700" :href="item.url">{{ item.text }}</a>
+                        <a class="p-2 m-1 w-full flex hover:bg-gray-50  hover:text-green-700 uppercase" :href="item.url">{{ item.text }}</a>
                         <button class="bg-white p-2 mx-1" @click="activeId = activeId != item._id ? item._id : null">
                             <svg v-if="item.childrens && item.childrens.length > 0" class="w-3 transform" :class="activeId==item._id ? 'rotate-180': ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
                                 <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393  c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393  s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>

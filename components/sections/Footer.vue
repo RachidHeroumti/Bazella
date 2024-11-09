@@ -4,19 +4,19 @@
     <div class="container ">
         <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  gap-5 text-12px text-black font-normal  mb-16px px-40px">
            
-            <div class=" flex flex-col justify-center w-full md:w-auto">
+            <div class=" flex flex-col justify-center w-full md:w-auto ">
               
               <div v-if="$settings.sections.footer.pages_menu" class=" ">
                 <div v-for="(item,i) in $settings.sections.footer.pages_menu.items" :key="i" >
-                  <router-link class="p-2 m-1 w-full flex " :to="item.url">{{ item.text }}</router-link>
+                  <router-link class="p-2 m-1 md:w-full flex justify-center md:justify-normal  " :to="item.url">{{ item.text }}</router-link>
                 </div>
               </div>
           </div>
-            <div class=" flex flex-col justify-center w-full md:w-auto">
+            <div class=" flex flex-col justify-center w-full md:w-auto ">
               
                 <div v-if="$settings.sections.footer.pages_menu" class=" ">
                   <div v-for="(item,i) in $settings.sections.footer.pages_menu.items" :key="i" >
-                    <router-link class="p-2 m-1 w-full flex" :to="item.url">{{ item.text }}</router-link>
+                    <router-link class="p-2 m-1 md:w-full flex justify-center md:justify-normal  " :to="item.url">{{ item.text }}</router-link>
                   </div>
                 </div>
             </div>
@@ -24,13 +24,13 @@
             <div class="flex flex-col justify-center w-full md:w-auto">
               <div v-if="$settings.sections.footer.menu_seasons" class=" ">
                 <div v-for="(item,i) in $settings.sections.footer.menu_seasons.items" :key="i" >
-                    <router-link class="p-2 m-1 w-full flex " :to="item.url">{{ item.text }}</router-link>
+                    <router-link class="p-2 m-1 md:w-full flex justify-center md:justify-normal   " :to="item.url">{{ item.text }}</router-link>
                 </div>
               </div>
           </div>
             <div class=" gap-3 flex flex-col justify-center w-full md:w-auto">
-                <div class="" v-html="$settings.sections.footer.about"></div>
-                <div class="h-full">
+                <div class=" text-center" v-html="$settings.sections.footer.about"></div>
+                <div class="h-full flex justify-center ">
                     <div  v-if="socialMedia"
                     class="flex flex-wrap ">
                         <div v-for="item in socialMedia.filter(s=>$settings.sections.footer.social_media[s.name])" :key="item.name" class=" ml-3 mt-5 flex items-center justify-between">

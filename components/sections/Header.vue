@@ -2,41 +2,46 @@
   <div class=" ">
     <si-app-loader placement="BEFORE_HEADER" />
     <div class="relative text-gray-900 px-10px md:px-40px bg-white shadow-sm">
-      <div
-        class="border-b border-gray-200 flex-col md:flex-row justify-between text-12px text-black font-poppins hidden md:flex"
-      >
-        <div class="flex items-center h-full">
-          <a href="/about" class="px-10px py-5px block">About</a>
-          <a href="/contact" class="px-10 py-5px block">Contact</a>
-          <a href="/faq" class="px-10px py-5px block">FAQ</a>
-        </div>
-        <div class="flex items-center">
-          <div v-if="socialMedia" class="flex flex-wrap">
-            <div
-              v-for="item in socialMedia.filter(
-                (s) => $settings.sections.footer.social_media[s.name]
-              )"
-              :key="item.name"
-              class="ml-3 flex items-center justify-between"
-            >
-              <a
-                class="h-full flex"
-                :href="$settings.sections.footer.social_media[item.name]"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <si-image
-                  class="h-4 w-4"
-                  width="16"
-                  height="16"
-                  :src="item.image"
-                  :alt="item.name"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div  
+  v-if="section.top.active"  
+  class="border-b border-gray-200 py-[5px] flex-col md:flex-row justify-between text-[12px] text-black font-poppins hidden md:flex"  
+>  
+  <div class="flex items-center h-full"
+   v-if="section.top.pages_menu">  
+    <div v-for="(item, i) in section.top.pages_menu.items" :key="i">   
+      <router-link class="px-[10px] py-[5px] block" 
+      :to="item.url"
+      >  
+        <span>{{ item.text }}</span>  
+      </router-link>  
+    </div>  
+  </div>  
+  
+  <div class="flex items-center" v-if="section.top.social_icons.active">  
+    <div v-if="socialMedia" class="flex flex-wrap">  
+      <div  
+        v-for="item in socialMedia.filter(s => $settings.sections.footer.social_media[s.name])"  
+        :key="item.name"  
+        class="ml-3 flex items-center justify-between"  
+      >  
+        <a  
+          class="h-full flex"  
+          :href="$settings.sections.footer.social_media[item.name]"  
+          target="_blank"  
+          rel="noopener noreferrer"  
+        >  
+          <si-image  
+            class="h-4 w-4"  
+            width="16"  
+            height="16"  
+            :src="item.image"  
+            :alt="item.name"  
+          />  
+        </a>  
+      </div>  
+    </div>  
+  </div>  
+</div>
 
       <div class="flex items-center justify-between py-20px">
         <div class="flex items-center justify-start h-full">
