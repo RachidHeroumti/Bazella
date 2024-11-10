@@ -3,7 +3,6 @@
     <div>
       <div v-if="banner.items" class="relative w-full">
         <div class="relative w-full overflow-hidden ">
-          <!-- Main Image Container -->
           <div
             class="flex transition-transform duration-1000 ease-in-out"
             :style="{ transform: `translateX(-${activeIndex * 100}%)` }"
@@ -39,22 +38,25 @@
               
                 </button>
               </div>
-            </div> 
 
-          <div
-            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+              <div
+            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 "
           >
             <span
               v-for="(x, y) in banner.items"
               :key="y"
               :class="{
-                'bg-gray-800': y === activeIndex,
-                'bg-gray-300': y !== activeIndex,
+                'bg-gray-800': y === 'item_'+activeIndex,
+                'bg-gray-300': y !== 'item_'+activeIndex,
               }"
               class="w-10 h-2 rounded-full cursor-pointer transition-colors duration-300"
-              @click="animate(y)"
-            ></span>
+            >
+          </span>
           </div>
+            </div> 
+
+        
+
         </div>
       </div>
 
@@ -76,6 +78,7 @@ export default {
     };
   },
   mounted() {
+    this.BannerItemsLength();
     this.startAutoplay();
   },
   beforeDestroy() {
@@ -83,22 +86,23 @@ export default {
   },
   methods: {
     animate(index) {
+      console.log("slide active",index);
       this.activeIndex = index;
       this.resetAutoplay();
     },
-    BannerItemsLenght() {
-      let i = 0;
-      for (let item of this.banner.items) {
-        i++;
-      }
-      this.itemsLength = i;
-    },
+    BannerItemsLength() {  
+
+  if (this.$settings && this.$settings.sections && this.$settings.sections.banner && typeof this.$settings.sections.banner.items === 'object' && this.$settings.sections.banner.items !== null) {  
+    this.itemsLength = Object.keys(this.$settings.sections.banner.items).length;   
+  } else {  
+    console.log("🚀 ~ BannerItemsLength ~ banner items not available or not an object:");  
+    this.itemsLength = 0;  
+  }  
+},
     startAutoplay() {
       this.autoplayInterval = setInterval(() => {
-        const totalSlides = this.banner.items.length;
-         //console.log("items ",this.$settings.sections.banner.items);
-        
-        if (this.activeIndex < 0 || this.activeIndex >= 3 - 1) {
+        const totalSlides = this.itemsLength;
+        if (this.activeIndex < 0 || this.activeIndex >= totalSlides - 1) {
           this.toNextSlide = !this.toNextSlide;
         }
 

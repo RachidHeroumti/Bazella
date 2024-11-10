@@ -8,7 +8,7 @@
         {{ Item.title }}  
       </h2>  
       <p class=" md:pb-15px block tracking-1.7px text-13.6px w-full  text-center">  
-        {{ Item.offer }}  
+        {{ Item.offer}}  
       </p>  
     </div>  
     
@@ -20,7 +20,7 @@
         >  
           {{ days }} 
         </h1>  
-        <p class="tracking-1.7px text-12px">Days</p>  
+        <p class="tracking-1.7px text-12px">{{ Item.date.day_text }}</p>  
       </div> 
       <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
@@ -28,7 +28,7 @@
         >  
           {{ hours }}  
         </h1>  
-        <p class="tracking-1.7px text-12px">Hours</p>  
+        <p class="tracking-1.7px text-12px">{{ Item.date.hours_text }}</p>  
       </div>  
       <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
@@ -36,7 +36,7 @@
         >  
           {{ minutes }}  
         </h1>  
-        <p class="tracking-1.7px text-12px">Minutes</p>  
+        <p class="tracking-1.7px text-12px">{{ Item.date.minutes_text }}</p>  
       </div>  
       <div class="md:px-16px px-2 border-s-black border-s">  
         <h1  
@@ -44,7 +44,7 @@
         >  
           {{ seconds }}  
         </h1>  
-        <p class="tracking-1.7px text-12px">Seconds</p>  
+        <p class="tracking-1.7px text-12px">{{ Item.date.second_text }}</p>  
       </div>  
     </div> 
 
@@ -54,65 +54,68 @@
 </template>  
 
 <script>  
-export default {  
-  data() {  
-    return {  
-      Item: this.$settings.sections.counter,  
-      days: 3,  
-      hours: 0,  
-      minutes: 0,  
-      seconds: 0,  
-      countdownInterval: null,  
-    };  
-  },  
-  mounted() {  
-    this.startCountdown();  
-  },  
-  beforeUnmount() {  
-    clearInterval(this.countdownInterval);  
-    localStorage.setItem('countdownData', JSON.stringify({  
-      days: this.days,  
-      hours: this.hours,  
-      minutes: this.minutes,  
-      seconds: this.seconds,  
-    }));  
-  },  
-  methods: {  
-    startCountdown() {  
-      const countdownData = JSON.parse(localStorage.getItem('countdownData'));  
-      if (countdownData) {  
-        this.days = countdownData.days;  
-        this.hours = countdownData.hours;  
-        this.minutes = countdownData.minutes;  
-        this.seconds = countdownData.seconds;  
-      }  
+export default {
+  data() {
+    return {
+      Item: this.$settings.sections.counter,
+      dateFrom: this.$settings.sections.counter.date.from, // Format: "dd-mm-yyyy"
+      dateTo: this.$settings.sections.counter.date.to, // Format: "dd-mm-yyyy"
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      countdownInterval: null,
+    };
+  },
+  mounted() {
+    this.startCountdown();
+  },
+  beforeUnmount() {
+    clearInterval(this.countdownInterval);
+    localStorage.setItem('countdownData', JSON.stringify({
+      days: this.days,
+      hours: this.hours,
+      minutes: this.minutes,
+      seconds: this.seconds,
+    }));
+  },
+  methods: {
+    startCountdown() {
+      const dateTo = new Date(
+        this.dateTo.split('-').reverse().join('-') // Convert "dd-mm-yyyy" to "yyyy-mm-dd" for parsing
+      );
+      const now = new Date();
 
-      this.countdownInterval = setInterval(() => {  
-        if (this.seconds === 0) {  
-          if (this.minutes === 0) {  
-            if (this.hours === 0) {  
-              if (this.days === 0) {  
-                clearInterval(this.countdownInterval);  
-                return;  
-              }  
-              this.days--;  
-              this.hours = 23;  
-              this.minutes = 59;  
-              this.seconds = 59;  
-            } else {  
-              this.hours--;  
-              this.minutes = 59;  
-              this.seconds = 59;  
-            }  
-          } else {  
-            this.minutes--;  
-            this.seconds = 59;  
-          }  
-        } else {  
-          this.seconds--;  
-        }  
-      }, 1000);  
-    },  
-  },  
-};  
+      if (dateTo <= now) {
+        clearInterval(this.countdownInterval);
+        return;
+      }
+
+      this.updateCountdown(dateTo);
+
+      this.countdownInterval = setInterval(() => {
+        this.updateCountdown(dateTo);
+      }, 1000);
+    },
+    updateCountdown(targetDate) {
+      const now = new Date();
+      const timeDifference = targetDate - now;
+
+      if (timeDifference <= 0) {
+        clearInterval(this.countdownInterval);
+        this.days = 0;
+        this.hours = 0;
+        this.minutes = 0;
+        this.seconds = 0;
+        return;
+      }
+
+      this.days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      this.hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      this.minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      this.seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    },
+  },
+};
+  
 </script>
