@@ -1,4 +1,31 @@
 {
+  "left_menu": "Left Menu",
+"right_menu": "Right Menu",
+"top_header": "Top Header",
+"pages_menu": "Pages Menu",
+
+"show_top_header": "Show Top Header",
+"show_social_icons": "Show Social Icons",
+"text_shipping": "Shipping Text",
+"days_text": "Days Text",
+"hours_text": "Hours Text",
+"seconds_text": "Seconds Text",
+"minutes_text": "Minutes Text",
+"show_counter": "Show Counter",
+
+"from": "From",
+"to": "To",
+"Offer": "Offer",
+"information": "Information",
+
+"upsell_banner_options": "Upsell Banner Options",
+"show_upsell_banner": "Show Upsell Banner",
+
+"show_collection": "Show Collection",
+"selected_collection": "Selected Collection",
+
+"one_post": "One Post",
+"show_map": "Show Map",
   "global_options": "Global Options",
   "options": "Options",
   "primary_color": "Primary Color",

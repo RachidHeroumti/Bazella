@@ -2,6 +2,33 @@
 "global_options": "Options globales",
 "options": "Options",
 "primary_color": "Couleur primaire",
+"left_menu": "Menu de gauche",
+"right_menu": "Menu de droite",
+"top_header": "En-tête supérieur",
+"pages_menu": "Menu des pages",
+
+"show_top_header": "Afficher l'en-tête supérieur",
+"show_social_icons": "Afficher les icônes sociales",
+"text_shipping": "Texte de livraison",
+"days_text": "Texte des jours",
+"hours_text": "Texte des heures",
+"seconds_text": "Texte des secondes",
+"minutes_text": "Texte des minutes",
+"show_counter": "Afficher le compteur",
+
+"from": "De",
+"to": "À",
+"Offer": "Offre",
+"information": "Informations",
+
+"upsell_banner_options": "Options de la bannière de vente incitative",
+"show_upsell_banner": "Afficher la bannière de vente incitative",
+
+"show_collection": "Afficher la collection",
+"selected_collection": "Collection sélectionnée",
+
+"one_post": "Un post",
+"show_map": "Afficher la carte",
 "add_to_cart_button": "Bouton ajouter au panier",
 "add_to_cart_to_checkout": "Add to Cart to Checkout",
 "alerts": "Alertes",

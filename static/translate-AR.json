@@ -6,6 +6,35 @@
 "global_options": "الاعدادات العامة",
 "options": "الاعدادات",
 "primary_color": "اللون الاولي",
+
+"left_menu": "القائمة اليسرى",
+"right_menu": "القائمة اليمنى",
+"top_header": "رأس الصفحة",
+"pages_menu": "قائمة الصفحات",
+
+"show_top_header": "إظهار رأس الصفحة",
+"show_social_icons": "إظهار الأيقونات الاجتماعية",
+"text_shipping": "نص الشحن",
+"days_text": "نص الأيام",
+"hours_text": "نص الساعات",
+"seconds_text": "نص الثواني",
+"minutes_text": "نص الدقائق",
+"show_counter": "إظهار العداد",
+
+"from": "من",
+"to": "إلى",
+"Offer": "عرض",
+"information": "معلومات",
+
+"upsell_banner_options": "خيارات لافتة البيع الإضافي",
+"show_upsell_banner": "إظهار لافتة البيع الإضافي",
+
+"show_collection": "إظهار المجموعة",
+"selected_collection": "المجموعة المحددة",
+
+"one_post": "منشور واحد",
+"show_map": "إظهار الخريطة",
+
 "add_to_cart_button": "اضافة الى السلة",
 "add_to_cart_to_checkout": "",
 "alerts": "الانذارات",
