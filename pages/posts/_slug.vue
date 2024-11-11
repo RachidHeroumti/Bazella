@@ -8,9 +8,9 @@
             <hr class="m-0">
             <!-- <div class="relative p-2 m-2 bg-fixed bg-center bg-cover border-4 border-white shadow h-80" 
             :style="`background-image:url('${item.image ? item.image.url : null }')`"></div> -->
-            <div class=" w-full "> 
+            <div class=" w-full max-h-screen"> 
                 <nuxt-img
-                class=" w-full object-cover "
+                class=" w-full max-h-screen object-cover "
                 :src="item.image ? item.image.url : null"
                 alt="post-pic"
                 ></nuxt-img>

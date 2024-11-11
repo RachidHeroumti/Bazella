@@ -150,7 +150,7 @@
                       'submenu',
                       { 'submenu-visible': hoveredItem === i },
                     ]"
-                    class="p-4 py-2 sm:py-5 z-30 w-80 bg-gray-100 shadow-sm"
+                    class="p-4 py-2 sm:py-5 z-30 w-80 bg-white shadow-sm"
                     @mouseenter="hoveredItem = i"
                     @mouseleave="hoveredItem = null"
                   >

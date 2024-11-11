@@ -206,7 +206,7 @@
                 :class="
                   params['options.values.value1'] &&
                   params['options.values.value1'].indexOf(item.value1) >= 0
-                    ? 'bg-white text-black text-16px font-tenor-sans '
+                    ? 'bg-white text-black text-13.6px font-poppins '
                     : ''
                 "
               >
@@ -232,7 +232,7 @@
                 </label>
 
                 <label
-                  class="px-2 cursor-pointer hover:underline text-16px font-tenor-sans px-15p"
+                  class="px-2 cursor-pointer hover:underline text-13.6px font-poppins px-15p"
                   :for="item.value1"
                   :class="clickedIndex === i ? 'underline' : 'no-underline'"
                 >
@@ -288,7 +288,7 @@
                   :class="
                     params['collections.slug-in'] &&
                     params['collections.slug-in'].indexOf(item.slug) >= 0
-                      ? 'bg-white text-black text-16px font-tenor-sans'
+                      ? 'bg-white text-black text-13.6px font-poppins'
                       : ''
                   "
                 >
@@ -317,7 +317,7 @@
                   </label>
 
                   <label
-                    class="px-2 cursor-pointer hover:underline text-16px font-tenor-sans px-15p"
+                    class="px-2 cursor-pointer hover:underline text-13.6px font-poppins px-15p"
                     @click="toggleCollectionActive(i)"
                     :for="item.slug"
                     :class="
@@ -411,7 +411,7 @@
                 class="flex items-center m-0.5 rounded-md"
                 :class="
                   params['tags-in'] && params['tags-in'].indexOf(tag) >= 0
-                    ? 'bg-white text-black text-16px font-tenor-sans'
+                    ? 'bg-white text-black text-13.6px font-poppins'
                     : ''
                 "
               >
@@ -432,7 +432,7 @@
                   :for="`tag_${tag}`"
                 ></label>
                 <label
-                  class="px-2 cursor-pointer hover:underline text-16px font-tenor-sans px-15p"
+                  class="px-2 cursor-pointer hover:underline text-13.6px font-poppins px-15p"
                   :for="`tag_${tag}`"
                   @click="toggleTagActive(i)"
                 >

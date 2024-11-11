@@ -1,6 +1,6 @@
 <template >
     <div
-    class="overflow-hidden    md:px-8  md:mt-20 mt-10   bg-black md:bg-white "
+    class="overflow-hidden     md:mt-20 mt-10   bg-black md:bg-white container "
     v-if=" this.$settings.sections.onepost.active"> 
   <div
     class="flex flex-col justify-center md:justify-normal max-w-full max-h-screen md:relative"

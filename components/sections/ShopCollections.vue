@@ -136,4 +136,24 @@
     },
   };
   </script>
+  <style scoped>
+  /* Custom scrollbar style */
+  ::-webkit-scrollbar {
+    height: 6px; /* Decrease the scrollbar height */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #a5a4a4; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners for the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color on hover */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+  }
+  </style>
+  
   

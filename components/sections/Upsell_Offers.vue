@@ -14,7 +14,8 @@
      </div>
      <div class=" w-full">
         <nuxt-img class=" h-[150px]" 
-        :src="item.image.src" alt="image"> 
+        :src="item.image?.src || ' '" 
+        alt="pic"> 
         </nuxt-img>
      </div>
     </div>
